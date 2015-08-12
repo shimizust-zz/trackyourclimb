@@ -1,0 +1,781 @@
+/*index.php*/
+/* navbar */
+/*
+.navbar-default {
+    background-color: rgba(0,0,0,0.7);
+    border-color: rgba(0,0,0,0.7);
+	border-radius:0px;
+	margin-bottom:0px;
+}*/
+
+@font-face {
+	font-family: CasualHardcore;
+	src: url("../fonts/Casual Hardcore.otf") format("opentype");
+}
+
+@media screen and (device-aspect-ratio: 2/3), screen and (device-aspect-ratio: 40/71), screen and (max-device-width: 480px), only screen and (max-width: 700px) {
+	#login-btn {
+		padding: 22px 32px;
+		font-size: 30px;
+		line-height: normal;
+		-webkit-border-radius: 8px;
+		-moz-border-radius: 8px;
+            border-radius: 8px;
+	}
+	#register-btn {
+		padding: 22px 32px;
+		font-size: 30px;
+		line-height: normal;
+		-webkit-border-radius: 8px;
+		-moz-border-radius: 8px;
+            border-radius: 8px;
+	}
+	#learnmore-btn {
+		padding: 22px 32px;
+		font-size: 30px;
+		line-height: normal;
+		-webkit-border-radius: 8px;
+		-moz-border-radius: 8px;
+            border-radius: 8px;
+	}
+	
+	
+
+}
+
+.fixedElement {
+
+    position:static;
+    top:0;
+   
+    z-index:100;
+}
+
+#login-modal .modal-dialog  {
+	width: 250px;
+}
+#register-modal .modal-dialog  {
+	width: 300px;
+}
+
+#login-btn{
+	border-color: #4D4E53;
+	background-color: #4D4E53;
+	/*font-family: @font-family-base;*/
+	
+}
+#register-btn{
+	border-color: #4D4E53;
+	background-color: #4D4E53;
+}
+#learnmore-btn {
+	color: #FFFFFF;
+}
+#index-navbar-container {
+	max-width: 1000px;
+}
+
+
+
+.white {
+	color:#fff;
+}
+.jumbotron {
+	display: block;
+	color: #FFFFFF;
+	background-color: rgba(0,0,0,0.7);
+	border-radius: 0px;
+	width: 95%;
+	margin-left: 0%;
+	margin-right: 0%;
+	margin-top: 0px;
+	margin-bottom: 40px;
+}
+#container-main {
+	max-width: 900px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#indexpage-jumbotron {
+	background: url(../images/TrackYourClimb_yellow.png) no-repeat center center;
+	height: 432px;
+	width: 100%;
+	border-color: black;
+}
+
+#howitworks-image {
+	margin-top: 40px;
+	width:100%;
+	border-radius: 5px;
+	margin-bottom: 20px;
+}
+
+#gymStateLabel {
+	font-weight: bold;
+	font-size: 1.3em;
+}
+
+#howitworks-section {
+	margin-bottom: 50px;
+}
+
+#registerform {
+	float:left;
+}
+#loginform {
+	float:right;
+
+}
+#registerdiv {
+
+	color: #FFFFFF;
+	background-color: rgba(0,0,0,0.7);
+	border-radius:5px;
+	padding-bottom:20px;
+	margin-left:22.5%;
+	margin-bottom: 50px;
+
+}
+#logindiv {
+
+	color: #FFFFFF;
+	background-color: rgba(0,0,0,0.7);
+	border-radius:5px;
+	padding-bottom:20px;
+	margin-left:5%;
+
+}
+
+#forgotpwlink {
+	color: #FFFFFF;
+	text-decoration: underline;
+}
+
+#index-scrolldown {
+
+	background-color: rgba(0,0,0,0.7);
+	color: #FFFFFF;
+	display: inline block;
+	clear: both;
+	width: 60%;
+	height: 40px;
+	text-align: center;
+	border-radius: 5px;
+	margin-left: auto;
+	margin-top: 30px;
+	margin-bottom: 50px;
+	line-height:40px;
+}
+
+#circular-SSphoto {
+	float:left;
+	width: 200px;
+	height: 200px;
+	border-radius: 100px;
+	-webkit-border-radius: 100px;
+	-moz-border-radius: 100px;
+	background: url('../images/Steven-photo3.png') no-repeat;
+	/*box-shadow: 0 0 4px rgba(0, 0, 0, .8);
+	-webkit-box-shadow: 0 0 4px rgba(0, 0, 0, .8);
+	-moz-box-shadow: 0 0 4px rgba(0, 0, 0, .8);*/
+	}
+
+.blue-block {
+background: rgb(30,105,222); /* Old browsers */
+background: -moz-linear-gradient(45deg, rgba(30,105,222,1) 0%, rgba(84,163,238,1) 69%, rgba(109,179,242,1) 70%, rgba(109,179,242,1) 70%, rgba(54,144,240,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,rgba(30,105,222,1)), color-stop(69%,rgba(84,163,238,1)), color-stop(70%,rgba(109,179,242,1)), color-stop(70%,rgba(109,179,242,1)), color-stop(100%,rgba(54,144,240,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(45deg, rgba(30,105,222,1) 0%,rgba(84,163,238,1) 69%,rgba(109,179,242,1) 70%,rgba(109,179,242,1) 70%,rgba(54,144,240,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(45deg, rgba(30,105,222,1) 0%,rgba(84,163,238,1) 69%,rgba(109,179,242,1) 70%,rgba(109,179,242,1) 70%,rgba(54,144,240,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(45deg, rgba(30,105,222,1) 0%,rgba(84,163,238,1) 69%,rgba(109,179,242,1) 70%,rgba(109,179,242,1) 70%,rgba(54,144,240,1) 100%); /* IE10+ */
+background: linear-gradient(45deg, rgba(30,105,222,1) 0%,rgba(84,163,238,1) 69%,rgba(109,179,242,1) 70%,rgba(109,179,242,1) 70%,rgba(54,144,240,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e69de', endColorstr='#3690f0',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+.green-block {
+background: rgb(191,210,85); /* Old browsers */
+background: -moz-linear-gradient(45deg, rgba(191,210,85,1) 0%, rgba(142,185,42,1) 70%, rgba(114,170,0,1) 70%, rgba(158,203,45,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,rgba(191,210,85,1)), color-stop(70%,rgba(142,185,42,1)), color-stop(70%,rgba(114,170,0,1)), color-stop(100%,rgba(158,203,45,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(45deg, rgba(191,210,85,1) 0%,rgba(142,185,42,1) 70%,rgba(114,170,0,1) 70%,rgba(158,203,45,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(45deg, rgba(191,210,85,1) 0%,rgba(142,185,42,1) 70%,rgba(114,170,0,1) 70%,rgba(158,203,45,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(45deg, rgba(191,210,85,1) 0%,rgba(142,185,42,1) 70%,rgba(114,170,0,1) 70%,rgba(158,203,45,1) 100%); /* IE10+ */
+background: linear-gradient(45deg, rgba(191,210,85,1) 0%,rgba(142,185,42,1) 70%,rgba(114,170,0,1) 70%,rgba(158,203,45,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bfd255', endColorstr='#9ecb2d',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+.orange-block {
+background: rgb(252,234,187); /* Old browsers */
+background: -moz-linear-gradient(45deg, rgba(252,234,187,1) 0%, rgba(252,205,77,1) 70%, rgba(248,181,0,1) 70%, rgba(251,223,147,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,rgba(252,234,187,1)), color-stop(70%,rgba(252,205,77,1)), color-stop(70%,rgba(248,181,0,1)), color-stop(100%,rgba(251,223,147,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(45deg, rgba(252,234,187,1) 0%,rgba(252,205,77,1) 70%,rgba(248,181,0,1) 70%,rgba(251,223,147,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(45deg, rgba(252,234,187,1) 0%,rgba(252,205,77,1) 70%,rgba(248,181,0,1) 70%,rgba(251,223,147,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(45deg, rgba(252,234,187,1) 0%,rgba(252,205,77,1) 70%,rgba(248,181,0,1) 70%,rgba(251,223,147,1) 100%); /* IE10+ */
+background: linear-gradient(45deg, rgba(252,234,187,1) 0%,rgba(252,205,77,1) 70%,rgba(248,181,0,1) 70%,rgba(251,223,147,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', endColorstr='#fbdf93',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+.red-block {
+background: rgb(248,80,50); /* Old browsers */
+background: -moz-linear-gradient(45deg,  rgba(248,80,50,1) 0%, rgba(246,41,12,1) 51%, rgba(241,111,92,1) 69%, rgba(240,47,23,1) 70%, rgba(248,80,50,1) 100%, rgba(231,56,39,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,rgba(248,80,50,1)), color-stop(51%,rgba(246,41,12,1)), color-stop(69%,rgba(241,111,92,1)), color-stop(70%,rgba(240,47,23,1)), color-stop(100%,rgba(248,80,50,1)), color-stop(100%,rgba(231,56,39,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(45deg,  rgba(248,80,50,1) 0%,rgba(246,41,12,1) 51%,rgba(241,111,92,1) 69%,rgba(240,47,23,1) 70%,rgba(248,80,50,1) 100%,rgba(231,56,39,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(45deg,  rgba(248,80,50,1) 0%,rgba(246,41,12,1) 51%,rgba(241,111,92,1) 69%,rgba(240,47,23,1) 70%,rgba(248,80,50,1) 100%,rgba(231,56,39,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(45deg,  rgba(248,80,50,1) 0%,rgba(246,41,12,1) 51%,rgba(241,111,92,1) 69%,rgba(240,47,23,1) 70%,rgba(248,80,50,1) 100%,rgba(231,56,39,1) 100%); /* IE10+ */
+background: linear-gradient(45deg,  rgba(248,80,50,1) 0%,rgba(246,41,12,1) 51%,rgba(241,111,92,1) 69%,rgba(240,47,23,1) 70%,rgba(248,80,50,1) 100%,rgba(231,56,39,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f85032', endColorstr='#e73827',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+}
+.gold-block {
+
+background: rgb(247,188,39); /* Old browsers */
+background: -moz-linear-gradient(45deg, rgba(247,188,39,1) 0%, rgba(249,207,99,1) 67%, rgba(249,207,99,1) 69%, rgba(249,207,99,1) 69%, rgba(252,205,77,1) 70%, rgba(248,181,0,1) 70%, rgba(251,223,147,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,rgba(247,188,39,1)), color-stop(67%,rgba(249,207,99,1)), color-stop(69%,rgba(249,207,99,1)), color-stop(69%,rgba(249,207,99,1)), color-stop(70%,rgba(252,205,77,1)), color-stop(70%,rgba(248,181,0,1)), color-stop(100%,rgba(251,223,147,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(45deg, rgba(247,188,39,1) 0%,rgba(249,207,99,1) 67%,rgba(249,207,99,1) 69%,rgba(249,207,99,1) 69%,rgba(252,205,77,1) 70%,rgba(248,181,0,1) 70%,rgba(251,223,147,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(45deg, rgba(247,188,39,1) 0%,rgba(249,207,99,1) 67%,rgba(249,207,99,1) 69%,rgba(249,207,99,1) 69%,rgba(252,205,77,1) 70%,rgba(248,181,0,1) 70%,rgba(251,223,147,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(45deg, rgba(247,188,39,1) 0%,rgba(249,207,99,1) 67%,rgba(249,207,99,1) 69%,rgba(249,207,99,1) 69%,rgba(252,205,77,1) 70%,rgba(248,181,0,1) 70%,rgba(251,223,147,1) 100%); /* IE10+ */
+background: linear-gradient(45deg, rgba(247,188,39,1) 0%,rgba(249,207,99,1) 67%,rgba(249,207,99,1) 69%,rgba(249,207,99,1) 69%,rgba(252,205,77,1) 70%,rgba(248,181,0,1) 70%,rgba(251,223,147,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7bc27', endColorstr='#fbdf93',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+}
+.yellow-block{
+
+background: rgb(249,207,99); /* Old browsers */
+background: -moz-linear-gradient(45deg,  rgba(249,207,99,1) 0%, rgba(252,205,77,1) 70%, rgba(248,181,0,1) 70%, rgba(251,223,147,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,rgba(249,207,99,1)), color-stop(70%,rgba(252,205,77,1)), color-stop(70%,rgba(248,181,0,1)), color-stop(100%,rgba(251,223,147,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(45deg,  rgba(249,207,99,1) 0%,rgba(252,205,77,1) 70%,rgba(248,181,0,1) 70%,rgba(251,223,147,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(45deg,  rgba(249,207,99,1) 0%,rgba(252,205,77,1) 70%,rgba(248,181,0,1) 70%,rgba(251,223,147,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(45deg,  rgba(249,207,99,1) 0%,rgba(252,205,77,1) 70%,rgba(248,181,0,1) 70%,rgba(251,223,147,1) 100%); /* IE10+ */
+background: linear-gradient(45deg,  rgba(249,207,99,1) 0%,rgba(252,205,77,1) 70%,rgba(248,181,0,1) 70%,rgba(251,223,147,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9cf63', endColorstr='#fbdf93',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+}
+
+.dashboard-stat {
+	font-family: CasualHardcore;
+	font-size: 6em;
+	background-color: #F8F8F8;
+	border: 1px solid #E0E0E0;
+	margin-bottom: 10px;
+	border-left: 7px solid #F9CF63;
+	text-align: center;
+}
+
+.dashboard-stat-text {
+	font-family: sans-serif;
+	font-size: 15px;
+}
+
+.event-box {
+	background-color: #F8F8F8;
+	border: 1px solid #E0E0E0;
+	margin-bottom: 10px;
+	border-left: 7px solid #A0C651;
+}
+.event-box p {
+	margin-top: 1em;
+	margin-bottom: 0px;
+}
+.event-box h4 {
+	margin-bottom: 4px;
+}
+a .event-box{
+	color: #000;
+}
+.event-box .row {
+	margin-bottom: 5px;
+}
+a .event-box :hover {
+	opacity: 0.8;
+	text-decoration: none;
+	-webkit-transition: all 0.05s linear;
+       -moz-transition: all 0.05s linear;
+        -ms-transition: all 0.05s linear;
+         -o-transition: all 0.05s linear;
+            transition: all 0.05s linear;
+}
+.event-desc {
+	font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+	white-space:pre-wrap;
+	word-break:normal;
+}
+.event-box .event-desc {
+	border: 0px solid #000;
+	background-color: #F8F8F8;
+	margin-top: 9px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+}
+.alink-nounderline:hover {
+	text-decoration: none;
+	
+}
+.outer-block {
+	display: table-cell;
+	vertical-align:middle;
+	height: 100px;
+	color:#FFFFFF;
+	text-align:center;
+	border-radius: 2px;
+}
+
+#block-content {
+	position:inline-block;
+	
+	
+}
+.outer-block:hover{
+
+	opacity: 0.7;
+	-webkit-transition: all 0.1s linear;
+       -moz-transition: all 0.1s linear;
+        -ms-transition: all 0.1s linear;
+         -o-transition: all 0.1s linear;
+            transition: all 0.1s linear;
+}
+.event-tags {
+	margin-right: 2px;
+	display: inline-block;
+}
+.row {
+	/*margin-bottom: 20px;*/
+	}
+.div-border {
+	padding: 15px;
+	border: 1px solid #DDD;
+
+}
+#img-shadow-div{
+
+  box-shadow: inset 0px 0px 15px #000;
+  position: relative;
+  z-index: auto;
+  margin-bottom: 15px;
+}
+ 
+#img-shadow { 
+  position: relative;
+  width: 100%;
+  z-index: -2;
+}
+
+#index-scrolldown:hover {
+	background-color: rgba(40,40,40,0.7);
+}
+
+.jumbotron-frontpage {
+	font-family: Lato;
+	width: 100%;
+	max-width: 1000px;
+	margin: 0 auto;
+	text-align:center;
+	padding-top:20px;
+	margin-bottom: 40px;
+	position: relative;
+	z-index: 0;
+}
+
+html,body {height:100%;}
+
+#wrap {min-height: 100%;}
+
+#main {
+	overflow: visible;
+	padding-bottom: 40px; /*must be same height as the footer*/
+}
+
+/*****************************/
+
+#footer {
+	position: relative;
+	margin-top: -40px; /*negative value of footer height*/
+	height: 40px;
+	clear: both;
+	text-align: center;
+	width: 100%;
+}
+/*Opera Fix*/
+body:before {
+	content:"";
+	height: 100%;
+	float:left;
+	width:0;
+	margin-top:-32767px;
+}
+
+#totalClimbNumber {
+	clear: both;
+	color: #FFFFFF;
+}
+#totalClimbNumberDiv {
+	display: inline-block;
+	color: #FFFFFF;
+	background-color: rgba(0,0,0,0.7);
+	border-radius: 5px;
+	width: 50%;
+	margin-left: 25%;
+	margin-right: 25%;
+	margin-top: 20px;
+	margin-bottom: 40px;
+}
+
+#push {
+	height: 200px;
+}
+
+#howToNumbers {
+	text-align: center;
+	margin-right: 50px;
+	display:inline-block;
+	border-radius:50%;
+	color:black;
+	font-size:30px;
+	background-color:#FFFFFF;
+	width:60px;
+	height:60px;
+	line-height:60px
+}
+
+.link-btn:link {
+	color: #FFFFFF;
+}
+
+/*workout-input.php*/
+#add-gym-text {
+	font-weight: normal;
+}
+
+#gym-picker {
+	width: 300px;
+	margin: 0 auto;
+}
+#select-general-div {
+	
+	width: 300px;
+	margin: 0 auto;
+}
+#workout-date {
+	width: 300px;
+	margin: 20px auto 30px;
+}
+
+#current-points {
+	margin: 20px auto 30px;
+	width: 300px;
+	left: 0;
+	right: 0;
+}
+
+#accordion {
+	width: 800px;
+	margin: auto auto;
+}
+
+#workout-form {
+	width: 800px;
+	margin: auto auto;
+}
+#btn-submit-workout {
+	margin: 20px;
+}
+
+.workoutInputTable {
+	width:100%;
+	table-layout:fixed; /*fixed width columns*/
+}
+
+.btn-Vratings, .btn-TRratings, .btn-Lratings ,.btn-grades{
+	margin-bottom: 5px;
+	margin-right: 15px;
+}
+
+.numClimbCounter {
+	margin-bottom:20px;
+	width: 40px;
+}
+
+/*end of workout-input.php*/
+#userimage-table {
+	width: 70%;
+	margin: 0 auto;
+}
+
+#userimage {
+	/*margin-left:20%;
+	float:left;*/
+}
+#basicinfopanel {
+	/*float:left;
+	margin-left:3%;
+	width: 35%;*/
+	max-width: 500px;
+}
+#basicinfopanel .panel-heading {
+	/*background-color: #FBCB43;*/
+	font-size: 15pt;
+}
+#basicinfotable {
+	width: 100%;
+}
+#basicinfotable tr td {
+	width:50%;
+	text-align: left;
+}
+#addgym-panel {
+	width:70%;
+	max-width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.inputs-panel {
+	width:70%;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 800px;
+}
+
+.userimage-thumb {
+
+	display: inline-block;
+	width:40px;
+	height:40px;
+	background-position:center;
+	background-size:cover;
+	border-radius: 4px;
+	border: 1px solid #DDD;
+	margin: 3px 8px 3px 3px;
+	
+}
+
+#rankings-header {
+	font-size: 1.2em;
+	text-align: center;
+}
+
+#rankings-header th {
+	text-align: center;
+	vertical-align: middle;
+}
+
+
+.table.rankings-table td{
+	text-align: center;
+	font-size: 1.3em;
+	vertical-align: middle;
+	padding: 0px 3px 0px 5px;
+}
+
+
+.middle {
+	vertical-align: middle;
+}
+
+#rankings-container {
+	max-width: 800px;
+}
+
+#td-username {
+	text-align: left;
+}
+
+
+
+/*mystats.php*/
+.climbvsTime {
+	width: 600px;
+	height:300px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:5px;
+}
+
+#records-table {
+	width: 100%;
+}
+#records-table td {
+	width: 2000px;
+}
+#records-table th {
+	width: 2000px;
+}
+
+#download-iframe {
+	display:none;
+}
+
+#placeholder {
+	width: 90%;
+	height: 300px;
+	margin: auto;
+}
+#piechartplaceholder {
+	width: 300px;
+	height: 300px;
+	margin: auto;
+}
+
+/*end of mystats.php*/
+
+#workout-download-btn {
+	display: block;
+	margin: 0 auto 15px;
+}
+
+#gradehistogram_all,#highestgradeplot_all {
+	width:600px;
+	height:300px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:5px;
+}
+.gradehistogram {
+	width: 600px;
+	height:300px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:5px;
+}
+
+#gym-list {
+	width: 80%;
+	max-width: 500px;
+	margin: 0 auto;
+	padding-top: 5%;
+}
+
+.generaldiv {
+	width:80%;
+	margin-left:auto;
+	margin-right:auto;
+}
+a:link {
+	color:black;
+}
+
+.alink-underline {
+	text-decoration: underline;
+}
+
+#editline {
+	font-size:0.7em;
+}
+
+.pastworkout-panel {
+	width:80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+.pastworkout-panel td {
+	text-align: center;
+
+}
+.generalheading {
+	margin-left:20%;
+	
+}
+#table-userinfoedit {
+	width:100%;
+}
+#table-userinfoedit td {
+	padding: 5px;
+}
+h2,h3,h4 {
+	text-align: center;
+}
+#climbSelect,#climbSelect2 {
+	margin-left:35%;
+}
+#ascentSelect,#ascentSelect2 {
+	margin-left:10%;
+}
+
+#splash-jumbotron {
+	color: #FFFFFF;
+	background-color: rgba(0,0,0,0.7);
+	height: 600px;
+	width: 600px;
+	margin-left: auto;
+	margin-right:auto;
+	border-radius: 10px;
+
+}
+#accesscodeinput,#emailinput {
+	color: #000000;
+}
+
+
+.ui-autocomplete {
+	max-height: 100px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+*html .ui-autocomplete {
+	height: 100px;
+}
+.ui-helper-hidden-accessible {
+	display: none;
+}
+
+
+.page-header {
+	margin: 40px 0 20px;
+	border-bottom: 1px solid #eee;
+}
+
+.lead-text {
+	font-size: 16px;
+}
+
+/*rankings.php*/
+#ranking-header {
+	text-align: left;
+	margin: 20px 0 20px;
+}
+
+.rankings-table {
+	margin-top: 30px;
+	margin-bottom: 60px;
+	
+}
+
+.form-control #boulderSelectGym {
+	width: 50%;
+}
+
+#scroll-padding {
+	height: 500px;
+}
+.homepage-input {
+	color: #000000;
+}
+
+#photo {
+	max-width: 100%;
+}
+
+/*forgot.php*/
+.input-panel {
+	width: 500px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.center {
+	margin: 0 auto;
+}
+
+#event-panel {
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+#event-tag-label {
+	margin-right: 25px;
+	font-weight: normal;
+}
+
+.event-details {
+	text-align:left;
+
+}
+.event-details a {
+	text-decoration: underline;
+}
+

@@ -1,0 +1,37 @@
+# Start A2 Switcher Block
+# Do not remove or modify this block! Added by PHP Switcher from cPanel to use an alternate PHP version. Contact Support for details.
+<IfModule mod_suphp.c>
+  AddHandler application/x-httpd-php-5.5.0 .php
+</IfModule>
+# End A2 Switcher Block
+
+# Prevent Apache from serving .ht* files:
+<FilesMatch "^\.ht">
+Order allow,deny
+Deny from all
+</FilesMatch>
+
+# Don't allow access to .ini files
+<files *.ini>
+order allow,deny
+deny from all
+</files>
+
+#redirect to php api controller
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+#These rules say that if the requested URI does not match an existing file or directory name (ex. trackyourclimb.com/workout-input.php), then try the following rewrite rule.
+
+RewriteRule api/v1/(.*)$ api/v1/api.php?request=$1 [QSA,NC,L]
+#This rule ([^\.]+) can be broken down as such: '^' means 'not', \. is an escaped period, and '+' matches 1 or more characters. So this matches all the characters that don't include a period character. 
+
+
+#match URI and redirect (ex. trackyourclimb.com/api/v1/users/user/1 should redirect to trackyourclimb.com/api/v1/api.php?request=users/user/1
+#the flag [QSA] means that the named capture will be appended to the newly created URI
+#the flag [NC] means that the URIs are not case-sensitive
+#the flag [L] means that the mod_rewrite should not provide any additional rules if this rule matches
+
+</IfModule>
+

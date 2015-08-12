@@ -1,0 +1,5 @@
+#ignore dev/prod siteproperties.ini file
+siteproperties.ini
+
+#ignore directory containing user images
+userimages/

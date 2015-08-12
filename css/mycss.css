@@ -1,0 +1,742 @@
+@font-face {
+  font-family: CasualHardcore;
+  src: url("../fonts/Casual Hardcore.otf") format("opentype");
+}
+@media screen and (max-width: 600px) {
+  #learnmore-navbar {
+    display: none;
+  }
+  #register-btn {
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 1.4em;
+  }
+  #login-btn {
+    width: 100%;
+    font-size: 1.4em;
+  }
+  #indexpage-jumbotron {
+    font-family: Lato;
+    color: #000;
+    text-align: center;
+    background: #fceabb;
+    /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover, #fceabb 25%, #fceabb 25%, #fccd4d 77%);
+    /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(25%, #fceabb), color-stop(25%, #fceabb), color-stop(77%, #fccd4d));
+    /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover, #fceabb 25%, #fceabb 25%, #fccd4d 77%);
+    /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover, #fceabb 25%, #fceabb 25%, #fccd4d 77%);
+    /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover, #fceabb 25%, #fceabb 25%, #fccd4d 77%);
+    /* IE10+ */
+    background: radial-gradient(ellipse at center, #fceabb 25%, #fceabb 25%, #fccd4d 77%);
+    /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fceabb', endColorstr='#fccd4d',GradientType=1);
+    /* IE6-9 fallback on horizontal gradient */
+    width: 100%;
+    border-color: black;
+  }
+  #howitworks {
+    display: none;
+  }
+  #workoutinput-panel-title {
+    text-align: left;
+  }
+}
+@media screen and (min-width: 601px) {
+  #indexpage-jumbotron {
+    background: url(../images/TrackYourClimb_yellow.png) no-repeat center center;
+    height: 432px;
+    width: 100%;
+    border-color: black;
+  }
+  #splashtitle-mobile {
+    display: none;
+  }
+}
+.fixedElement {
+  position: static;
+  top: 0;
+  z-index: 100;
+}
+#login-modal .modal-dialog {
+  width: 250px;
+}
+#register-modal .modal-dialog {
+  width: 300px;
+}
+#login-btn {
+  border-color: #4d4e53;
+  background-color: #4d4e53;
+}
+#register-btn {
+  border-color: #4d4e53;
+  background-color: #4d4e53;
+}
+#learnmore-btn {
+  color: #fff;
+}
+#index-navbar-container {
+  max-width: 1000px;
+}
+.white {
+  color: #fff;
+}
+.jumbotron {
+  display: block;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 0px;
+  width: 95%;
+  margin-left: 0%;
+  margin-right: 0%;
+  margin-top: 0px;
+  margin-bottom: 40px;
+}
+#container-main {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#howitworks-image {
+  margin-top: 40px;
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+#gymStateLabel {
+  font-weight: bold;
+  font-size: 1.3em;
+}
+#howitworks-section {
+  margin-bottom: 50px;
+}
+#registerform {
+  float: left;
+}
+#loginform {
+  float: right;
+}
+#registerdiv {
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 5px;
+  padding-bottom: 20px;
+  margin-left: 22.5%;
+  margin-bottom: 50px;
+}
+#logindiv {
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 5px;
+  padding-bottom: 20px;
+  margin-left: 5%;
+}
+#forgotpwlink {
+  color: #fff;
+  text-decoration: underline;
+}
+#index-scrolldown {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  display: inline block;
+  clear: both;
+  width: 60%;
+  height: 40px;
+  text-align: center;
+  border-radius: 5px;
+  margin-left: auto;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  line-height: 40px;
+}
+#circular-SSphoto {
+  float: left;
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  background: url('../images/Steven-photo3.png') no-repeat;
+  /*box-shadow: 0 0 4px rgba(0, 0, 0, .8);
+ -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, .8);
+ -moz-box-shadow: 0 0 4px rgba(0, 0, 0, .8);*/
+}
+.blue-block {
+  background: #1e69de;
+  /* Old browsers */
+  background: -moz-linear-gradient(45deg, #1e69de 0%, #54a3ee 69%, #6db3f2 70%, #6db3f2 70%, #3690f0 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, #1e69de), color-stop(69%, #54a3ee), color-stop(70%, #6db3f2), color-stop(70%, #6db3f2), color-stop(100%, #3690f0));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(45deg, #1e69de 0%, #54a3ee 69%, #6db3f2 70%, #6db3f2 70%, #3690f0 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(45deg, #1e69de 0%, #54a3ee 69%, #6db3f2 70%, #6db3f2 70%, #3690f0 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(45deg, #1e69de 0%, #54a3ee 69%, #6db3f2 70%, #6db3f2 70%, #3690f0 100%);
+  /* IE10+ */
+  background: linear-gradient(45deg, #1e69de 0%, #54a3ee 69%, #6db3f2 70%, #6db3f2 70%, #3690f0 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1e69de', endColorstr='#3690f0',GradientType=1);
+  /* IE6-9 fallback on horizontal gradient */
+}
+.green-block {
+  background: #bfd255;
+  /* Old browsers */
+  background: -moz-linear-gradient(45deg, #bfd255 0%, #8eb92a 70%, #72aa00 70%, #9ecb2d 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, #bfd255), color-stop(70%, #8eb92a), color-stop(70%, #72aa00), color-stop(100%, #9ecb2d));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(45deg, #bfd255 0%, #8eb92a 70%, #72aa00 70%, #9ecb2d 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(45deg, #bfd255 0%, #8eb92a 70%, #72aa00 70%, #9ecb2d 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(45deg, #bfd255 0%, #8eb92a 70%, #72aa00 70%, #9ecb2d 100%);
+  /* IE10+ */
+  background: linear-gradient(45deg, #bfd255 0%, #8eb92a 70%, #72aa00 70%, #9ecb2d 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#bfd255', endColorstr='#9ecb2d',GradientType=1);
+  /* IE6-9 fallback on horizontal gradient */
+}
+.orange-block {
+  background: #fceabb;
+  /* Old browsers */
+  background: -moz-linear-gradient(45deg, #fceabb 0%, #fccd4d 70%, #f8b500 70%, #fbdf93 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, #fceabb), color-stop(70%, #fccd4d), color-stop(70%, #f8b500), color-stop(100%, #fbdf93));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(45deg, #fceabb 0%, #fccd4d 70%, #f8b500 70%, #fbdf93 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(45deg, #fceabb 0%, #fccd4d 70%, #f8b500 70%, #fbdf93 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(45deg, #fceabb 0%, #fccd4d 70%, #f8b500 70%, #fbdf93 100%);
+  /* IE10+ */
+  background: linear-gradient(45deg, #fceabb 0%, #fccd4d 70%, #f8b500 70%, #fbdf93 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fceabb', endColorstr='#fbdf93',GradientType=1);
+  /* IE6-9 fallback on horizontal gradient */
+}
+.red-block {
+  background: #f85032;
+  /* Old browsers */
+  background: -moz-linear-gradient(45deg, #f85032 0%, #f6290c 51%, #f16f5c 69%, #f02f17 70%, #f85032 100%, #e73827 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, #f85032), color-stop(51%, #f6290c), color-stop(69%, #f16f5c), color-stop(70%, #f02f17), color-stop(100%, #f85032), color-stop(100%, #e73827));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(45deg, #f85032 0%, #f6290c 51%, #f16f5c 69%, #f02f17 70%, #f85032 100%, #e73827 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(45deg, #f85032 0%, #f6290c 51%, #f16f5c 69%, #f02f17 70%, #f85032 100%, #e73827 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(45deg, #f85032 0%, #f6290c 51%, #f16f5c 69%, #f02f17 70%, #f85032 100%, #e73827 100%);
+  /* IE10+ */
+  background: linear-gradient(45deg, #f85032 0%, #f6290c 51%, #f16f5c 69%, #f02f17 70%, #f85032 100%, #e73827 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f85032', endColorstr='#e73827',GradientType=1);
+  /* IE6-9 fallback on horizontal gradient */
+}
+.gold-block {
+  background: #f7bc27;
+  /* Old browsers */
+  background: -moz-linear-gradient(45deg, #f7bc27 0%, #f9cf63 67%, #f9cf63 69%, #f9cf63 69%, #fccd4d 70%, #f8b500 70%, #fbdf93 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, #f7bc27), color-stop(67%, #f9cf63), color-stop(69%, #f9cf63), color-stop(69%, #f9cf63), color-stop(70%, #fccd4d), color-stop(70%, #f8b500), color-stop(100%, #fbdf93));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(45deg, #f7bc27 0%, #f9cf63 67%, #f9cf63 69%, #f9cf63 69%, #fccd4d 70%, #f8b500 70%, #fbdf93 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(45deg, #f7bc27 0%, #f9cf63 67%, #f9cf63 69%, #f9cf63 69%, #fccd4d 70%, #f8b500 70%, #fbdf93 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(45deg, #f7bc27 0%, #f9cf63 67%, #f9cf63 69%, #f9cf63 69%, #fccd4d 70%, #f8b500 70%, #fbdf93 100%);
+  /* IE10+ */
+  background: linear-gradient(45deg, #f7bc27 0%, #f9cf63 67%, #f9cf63 69%, #f9cf63 69%, #fccd4d 70%, #f8b500 70%, #fbdf93 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f7bc27', endColorstr='#fbdf93',GradientType=1);
+  /* IE6-9 fallback on horizontal gradient */
+}
+.yellow-block {
+  background: #f9cf63;
+  /* Old browsers */
+  background: -moz-linear-gradient(45deg, #f9cf63 0%, #fccd4d 70%, #f8b500 70%, #fbdf93 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, #f9cf63), color-stop(70%, #fccd4d), color-stop(70%, #f8b500), color-stop(100%, #fbdf93));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(45deg, #f9cf63 0%, #fccd4d 70%, #f8b500 70%, #fbdf93 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(45deg, #f9cf63 0%, #fccd4d 70%, #f8b500 70%, #fbdf93 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(45deg, #f9cf63 0%, #fccd4d 70%, #f8b500 70%, #fbdf93 100%);
+  /* IE10+ */
+  background: linear-gradient(45deg, #f9cf63 0%, #fccd4d 70%, #f8b500 70%, #fbdf93 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9cf63', endColorstr='#fbdf93',GradientType=1);
+  /* IE6-9 fallback on horizontal gradient */
+}
+.dashboard-stat {
+  font-family: CasualHardcore;
+  font-size: 6em;
+  background-color: #f8f8f8;
+  border: 1px solid #e0e0e0;
+  margin-bottom: 10px;
+  border-left: 7px solid #f9cf63;
+  text-align: center;
+}
+.dashboard-stat-text {
+  font-family: sans-serif;
+  font-size: 15px;
+}
+.event-box {
+  background-color: #f8f8f8;
+  border: 1px solid #e0e0e0;
+  margin-bottom: 10px;
+  border-left: 7px solid #a0c651;
+}
+.event-box p {
+  margin-top: 1em;
+  margin-bottom: 0px;
+}
+.event-box h4 {
+  margin-bottom: 4px;
+}
+a .event-box {
+  color: #000;
+}
+.event-box .row {
+  margin-bottom: 5px;
+}
+a .event-box :hover {
+  opacity: 0.8;
+  text-decoration: none;
+  -webkit-transition: all 0.05s linear;
+  -moz-transition: all 0.05s linear;
+  -ms-transition: all 0.05s linear;
+  -o-transition: all 0.05s linear;
+  transition: all 0.05s linear;
+}
+.event-desc {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  white-space: pre-wrap;
+  word-break: normal;
+}
+.event-box .event-desc {
+  border: 0px solid #000;
+  background-color: #f8f8f8;
+  margin-top: 9px;
+  padding-left: 0px;
+  padding-bottom: 0px;
+}
+.alink-nounderline:hover {
+  text-decoration: none;
+}
+.outer-block {
+  display: table-cell;
+  vertical-align: middle;
+  height: 100px;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+}
+#block-content {
+  position: inline-block;
+}
+.outer-block:hover {
+  opacity: 0.7;
+  -webkit-transition: all 0.1s linear;
+  -moz-transition: all 0.1s linear;
+  -ms-transition: all 0.1s linear;
+  -o-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+}
+.event-tags {
+  margin-right: 2px;
+  display: inline-block;
+}
+.row {
+  /*margin-bottom: 20px;*/
+}
+.div-border {
+  padding: 15px;
+  border: 1px solid #ddd;
+}
+#img-shadow-div {
+  box-shadow: inset 0px 0px 15px #000;
+  position: relative;
+  z-index: auto;
+  margin-bottom: 15px;
+}
+#img-shadow {
+  position: relative;
+  width: 100%;
+  z-index: -2;
+}
+#index-scrolldown:hover {
+  background-color: rgba(40, 40, 40, 0.7);
+}
+.jumbotron-frontpage {
+  font-family: Lato;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 20px;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 0;
+}
+html, body {
+  height: 100%;
+}
+#wrap {
+  min-height: 100%;
+}
+#main {
+  overflow: visible;
+  padding-bottom: 40px;
+  /*must be same height as the footer*/
+}
+/*****************************/#footer {
+  position: relative;
+  margin-top: -40px;
+  /*negative value of footer height*/
+  height: 40px;
+  clear: both;
+  text-align: center;
+  width: 100%;
+}
+/*Opera Fix*/body:before {
+  content: "";
+  height: 100%;
+  float: left;
+  width: 0;
+  margin-top: -32767px;
+}
+#totalClimbNumber {
+  clear: both;
+  color: #fff;
+}
+#totalClimbNumberDiv {
+  display: inline-block;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 5px;
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+#push {
+  height: 200px;
+}
+#howToNumbers {
+  text-align: center;
+  margin-right: 50px;
+  display: inline-block;
+  border-radius: 50%;
+  color: black;
+  font-size: 30px;
+  background-color: #fff;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+}
+.link-btn:link {
+  color: #fff;
+}
+/*workout-input.php*/#add-gym-text {
+  font-weight: normal;
+}
+#gym-picker {
+  max-width: 300px;
+  margin: 0 auto;
+}
+#select-general-div {
+  width: 300px;
+  margin: 0 auto;
+}
+#workout-date {
+  max-width: 300px;
+  margin: 20px auto 30px;
+}
+#current-points {
+  margin: 20px auto 30px;
+  max-width: 300px;
+  left: 0;
+  right: 0;
+}
+#accordion {
+  width: 90%;
+  min-width: 720px;
+  max-width: 800px;
+  margin: auto auto;
+}
+#workout-form {
+  width: 90%;
+  max-width: 800px;
+  margin: auto auto;
+}
+#btn-submit-workout {
+  margin: 20px;
+}
+.workoutInputTable {
+  width: 100%;
+  table-layout: fixed;
+}
+/*fixed width columns*/.btn-Vratings, .btn-TRratings, .btn-Lratings, .btn-grades {
+  margin-bottom: 5px;
+  margin-right: 15px;
+}
+.numClimbCounter {
+  margin-bottom: 20px;
+  width: 40px;
+}
+/*end of workout-input.php*/#userimage-table {
+  width: 70%;
+  margin: 0 auto;
+}
+#userimage {
+  /*margin-left:20%;
+ float:left;*/
+}
+#basicinfopanel {
+  /*float:left;
+ margin-left:3%;
+ width: 35%;*/
+  max-width: 500px;
+}
+#basicinfopanel .panel-heading {
+  /*background-color: #FBCB43;*/
+  font-size: 15pt;
+}
+#basicinfotable {
+  width: 100%;
+}
+#basicinfotable tr td {
+  width: 50%;
+  text-align: left;
+}
+#addgym-panel {
+  width: 70%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.inputs-panel {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 800px;
+}
+.userimage-thumb {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background-position: center;
+  background-size: cover;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  margin: 3px 8px 3px 3px;
+}
+#rankings-header {
+  font-size: 1.2em;
+  text-align: center;
+}
+#rankings-header th {
+  text-align: center;
+  vertical-align: middle;
+}
+.table.rankings-table td {
+  text-align: center;
+  font-size: 1.3em;
+  vertical-align: middle;
+  padding: 0px 3px 0px 5px;
+}
+.middle {
+  vertical-align: middle;
+}
+#rankings-container {
+  max-width: 800px;
+}
+#td-username {
+  text-align: left;
+}
+/*mystats.php*/.climbvsTime {
+  width: 600px;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+}
+#records-table {
+  width: 100%;
+}
+#records-table td {
+  width: 2000px;
+}
+#records-table th {
+  width: 2000px;
+}
+#download-iframe {
+  display: none;
+}
+#placeholder {
+  width: 90%;
+  height: 300px;
+  margin: auto;
+}
+#piechartplaceholder {
+  width: 300px;
+  height: 300px;
+  margin: auto;
+}
+/*end of mystats.php*/#workout-download-btn {
+  display: block;
+  margin: 0 auto 15px;
+}
+.histogram-div {
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#gradehistogram_all, #highestgradeplot_all {
+  width: 600px;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+}
+.gradehistogram {
+  width: 600px;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+}
+#gym-list {
+  width: 80%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding-top: 5%;
+}
+.generaldiv {
+  max-width: 700px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+#workoutpref-div {
+  max-width: 700px;
+  width: 80%;
+  margin: 0 auto;
+}
+#rating-range-select {
+  max-width: 100px;
+  display: inline-block;
+}
+a:link {
+  color: black;
+}
+.alink-underline {
+  text-decoration: underline;
+}
+#editline {
+  font-size: 0.7em;
+}
+.pastworkout-panel {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.pastworkout-panel td {
+  text-align: center;
+}
+.generalheading {
+  margin-left: 20%;
+}
+#table-userinfoedit {
+  width: 100%;
+}
+#table-userinfoedit td {
+  padding: 5px;
+}
+h2, h3, h4 {
+  text-align: center;
+}
+#climbSelect, #climbSelect2 {
+  margin-left: 35%;
+}
+#ascentSelect, #ascentSelect2 {
+  margin-left: 10%;
+}
+#splash-jumbotron {
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 600px;
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+}
+#accesscodeinput, #emailinput {
+  color: #000;
+}
+.ui-autocomplete {
+  max-height: 100px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+*html .ui-autocomplete {
+  height: 100px;
+}
+.ui-helper-hidden-accessible {
+  display: none;
+}
+.page-header {
+  margin: 40px 0 20px;
+  border-bottom: 1px solid #eee;
+}
+.lead-text {
+  font-size: 16px;
+}
+/*rankings.php*/#ranking-header {
+  text-align: left;
+  margin: 20px 0 20px;
+}
+.rankings-table {
+  margin-top: 30px;
+  margin-bottom: 60px;
+}
+.form-control #boulderSelectGym {
+  width: 50%;
+}
+#scroll-padding {
+  height: 500px;
+}
+.homepage-input {
+  color: #000;
+}
+#photo {
+  max-width: 100%;
+}
+/*forgot.php*/.input-panel {
+  width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
+.center {
+  margin: 0 auto;
+}
+#event-panel {
+  max-width: 600px;
+  margin: 0 auto;
+}
+#event-tag-label {
+  margin-right: 25px;
+  font-weight: normal;
+}
+.event-details {
+  text-align: left;
+}
+.event-details a {
+  text-decoration: underline;
+}

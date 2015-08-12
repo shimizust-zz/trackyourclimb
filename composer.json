@@ -1,0 +1,5 @@
+{
+  "require": {
+    "leafo/scssphp": "dev-master"
+  }
+}
