@@ -18,7 +18,7 @@ include 'BoulderRouteGradingSystems.php';
 include 'getUserGradingPrefs.php';
 
 /** PHPExcel_IOFactory */
-include 'PHPExcel/Classes/PHPExcel/IOFactory.php';
+include 'vendor/phpoffice/phpexcel/Classes/PHPExcel/IOFactory.php';
 
 $objPHPExcel = new PHPExcel();
 $objWorksheet = $objPHPExcel->getActiveSheet();

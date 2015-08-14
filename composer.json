@@ -1,5 +1,6 @@
 {
   "require": {
-    "leafo/scssphp": "dev-master"
+    "leafo/scssphp": "dev-master",
+	"phpoffice/phpexcel": "1.8.0"
   }
 }
