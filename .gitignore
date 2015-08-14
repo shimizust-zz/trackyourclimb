@@ -3,3 +3,6 @@ siteproperties.ini
 
 #ignore directory containing user images
 userimages/
+
+#ignore vendor folder containing Composer-installed packages
+vendor/
