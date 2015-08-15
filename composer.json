@@ -1,6 +1,7 @@
 {
   "require": {
     "leafo/scssphp": "dev-master",
-	"phpoffice/phpexcel": "1.8.0"
+	"phpoffice/phpexcel": "1.8.0",
+	"drewm/mailchimp-api": "dev-master"
   }
 }

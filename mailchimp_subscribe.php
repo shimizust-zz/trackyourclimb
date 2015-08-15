@@ -1,5 +1,5 @@
 <?php
-include 'mailchimp-api-master/src/Drewm/MailChimp.php';
+include 'vendor/drewm/mailchimp-api/src/Drewm/MailChimp.php';
 
 function initialize_mailchimp() {
 	$siteprop_array = parse_ini_file("siteproperties.ini");

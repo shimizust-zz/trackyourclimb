@@ -4,8 +4,45 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b8c45ae24a23369756338ab07f01a723",
+    "hash": "40e432419c1b4e292b32fdbb0014e0f3",
     "packages": [
+        {
+            "name": "drewm/mailchimp-api",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/drewm/mailchimp-api.git",
+                "reference": "e5e16d2a7a456c282b1e160e70964eb9149e9968"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/drewm/mailchimp-api/zipball/e5e16d2a7a456c282b1e160e70964eb9149e9968",
+                "reference": "e5e16d2a7a456c282b1e160e70964eb9149e9968",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Drewm": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Drew McLellan",
+                    "homepage": "http://allinthehead.com/"
+                }
+            ],
+            "description": "Super-simple, minimum abstraction MailChimp API v2 wrapper",
+            "homepage": "https://github.com/drewm/mailchimp-api",
+            "time": "2015-07-28 13:59:56"
+        },
         {
             "name": "leafo/scssphp",
             "version": "dev-master",
@@ -124,7 +161,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "leafo/scssphp": 20
+        "leafo/scssphp": 20,
+        "drewm/mailchimp-api": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
