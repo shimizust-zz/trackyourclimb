@@ -6,3 +6,6 @@ userimages/
 
 #ignore vendor folder containing Composer-installed packages
 vendor/
+
+#ignore bower_components folder containing Bower-installed packages
+bower_components/

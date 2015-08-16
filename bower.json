@@ -1,0 +1,15 @@
+{
+  "name": "climbtracker",
+  "authors": [
+    "Steven Shimizu <shimizust@gmail.com>"
+  ],
+  "description": "a climbing tracker web app",
+  "license": "MIT",
+  "homepage": "www.trackyourclimb.com",
+  "dependencies": {
+	"flot": "~0.8.3",
+	"bootstrap-calendar": "~0.2.4",
+	"jqvmap": "manifestinteractive/jqvmap"
+  },
+  "private": true
+}
