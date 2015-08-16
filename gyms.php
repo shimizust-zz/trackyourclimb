@@ -38,17 +38,18 @@ $countryName = country_code_to_country($countryCode);
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 		<script src="js/bootstrap.js"></script>
 
-		<script src="vmap/jquery.vmap.js"></script>
-		<script src="vmap/jquery.vmap.world.js"></script>
-		<script src="vmap/jquery.vmap.sampledata.js"></script>
+		<script src="bower_components/jqvmap/jqvmap/jquery.vmap.js"></script>
+		<script src="bower_components/jqvmap/jqvmap/maps/jquery.vmap.world.js"></script>
+		
 		<script>
 			var gym_country_num = <?php echo json_encode($gym_country_num)?>;
 
 		</script>
 		<script src="js/sitePath.js"></script>
 		<script src="js/uservoice.js"></script>
+		<link rel="stylesheet" type="text/css" href="bower_components/jqvmap/jqvmap/jqvmap.css">
 		<link rel="stylesheet" type="text/css" href="css/mycss.css">
-		<link rel="stylesheet" type="text/css" href="vmap/jqvmap.css">
+		
 	</head>
 	
 	<body>
@@ -130,7 +131,6 @@ $countryName = country_code_to_country($countryCode);
 								dataType: 'json',
 								success: function(data) {
 									//Note: inner functions have access to variables in outer function
-									console.log(data);
 									writeGymList(data,region,listID);
 								},
 								error: function(){
@@ -145,7 +145,6 @@ $countryName = country_code_to_country($countryCode);
 								dataType: 'json',
 								success: function(data) {
 									//Note: inner functions have access to variables in outer function
-									console.log(data);
 									writeGymList(data,region,listID2);
 								},
 								error: function(){

@@ -814,3 +814,10 @@ h2,h3,h4 {
 	text-decoration: underline;
 }
 
+//Modification to jqvmap CSS
+.jqvmap-zoomin, .jqvmap-zoomout
+		{
+			width: 15px;
+			height: 15px;
+		}
+

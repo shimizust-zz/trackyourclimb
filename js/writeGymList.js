@@ -2,7 +2,7 @@ function writeGymList(data,region,listID) {
 //write the list of gyms in 
 
 num_gyms = data.length;
-console.log(data);
+
 states = Object.keys(data); //should return a list of states with gyms
 
 var gymListHTML = "<ol id='gym-list' class='list-group'>";
@@ -20,5 +20,4 @@ for (var k = 0;k<=states.length-1;k++) {
 gymListHTML += "</ol>";
 document.getElementById("countryHeader").innerHTML=region;
 document.getElementById(listID).innerHTML = gymListHTML;
-console.log(gymListHTML);
 }

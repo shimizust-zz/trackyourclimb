@@ -161,8 +161,8 @@
   -moz-border-radius: 100px;
   background: url('../images/Steven-photo3.png') no-repeat;
   /*box-shadow: 0 0 4px rgba(0, 0, 0, .8);
- -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, .8);
- -moz-box-shadow: 0 0 4px rgba(0, 0, 0, .8);*/
+   -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, .8);
+   -moz-box-shadow: 0 0 4px rgba(0, 0, 0, .8);*/
 }
 .blue-block {
   background: #1e69de;
@@ -394,7 +394,8 @@ html, body {
   padding-bottom: 40px;
   /*must be same height as the footer*/
 }
-/*****************************/#footer {
+/*****************************/
+#footer {
   position: relative;
   margin-top: -40px;
   /*negative value of footer height*/
@@ -403,7 +404,8 @@ html, body {
   text-align: center;
   width: 100%;
 }
-/*Opera Fix*/body:before {
+/*Opera Fix*/
+body:before {
   content: "";
   height: 100%;
   float: left;
@@ -443,7 +445,8 @@ html, body {
 .link-btn:link {
   color: #fff;
 }
-/*workout-input.php*/#add-gym-text {
+/*workout-input.php*/
+#add-gym-text {
   font-weight: normal;
 }
 #gym-picker {
@@ -482,7 +485,8 @@ html, body {
   width: 100%;
   table-layout: fixed;
 }
-/*fixed width columns*/.btn-Vratings, .btn-TRratings, .btn-Lratings, .btn-grades {
+/*fixed width columns*/
+.btn-Vratings, .btn-TRratings, .btn-Lratings, .btn-grades {
   margin-bottom: 5px;
   margin-right: 15px;
 }
@@ -490,18 +494,19 @@ html, body {
   margin-bottom: 20px;
   width: 40px;
 }
-/*end of workout-input.php*/#userimage-table {
+/*end of workout-input.php*/
+#userimage-table {
   width: 70%;
   margin: 0 auto;
 }
 #userimage {
   /*margin-left:20%;
- float:left;*/
+   float:left;*/
 }
 #basicinfopanel {
   /*float:left;
- margin-left:3%;
- width: 35%;*/
+   margin-left:3%;
+   width: 35%;*/
   max-width: 500px;
 }
 #basicinfopanel .panel-heading {
@@ -560,7 +565,8 @@ html, body {
 #td-username {
   text-align: left;
 }
-/*mystats.php*/.climbvsTime {
+/*mystats.php*/
+.climbvsTime {
   width: 600px;
   height: 300px;
   margin-left: auto;
@@ -589,7 +595,8 @@ html, body {
   height: 300px;
   margin: auto;
 }
-/*end of mystats.php*/#workout-download-btn {
+/*end of mystats.php*/
+#workout-download-btn {
   display: block;
   margin: 0 auto 15px;
 }
@@ -698,7 +705,8 @@ h2, h3, h4 {
 .lead-text {
   font-size: 16px;
 }
-/*rankings.php*/#ranking-header {
+/*rankings.php*/
+#ranking-header {
   text-align: left;
   margin: 20px 0 20px;
 }
@@ -718,7 +726,8 @@ h2, h3, h4 {
 #photo {
   max-width: 100%;
 }
-/*forgot.php*/.input-panel {
+/*forgot.php*/
+.input-panel {
   width: 500px;
   margin: 0 auto;
   text-align: center;
@@ -739,4 +748,8 @@ h2, h3, h4 {
 }
 .event-details a {
   text-decoration: underline;
+}
+.jqvmap-zoomin, .jqvmap-zoomout {
+  width: 15px;
+  height: 15px;
 }
