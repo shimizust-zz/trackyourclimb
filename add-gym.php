@@ -77,7 +77,6 @@ $countryCode = $countryResult['countryCode'];
 		<script src="js/changeClimbingAreaType.js"></script>
 		
 		<link rel="stylesheet" type="text/css" href="css/mycss.css">
-		<link rel="stylesheet" type="text/css" href="selectize/dist/css/selectize.bootstrap3.css">
 	
 	</head>
 

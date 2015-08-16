@@ -156,8 +156,7 @@ $gym_options .= "</optgroup>";
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 		<script src="js/bootstrap.js"></script>
 		<script src="js/uservoice.js"></script>
-		<script src="selectize/dist/js/standalone/selectize.js"></script>
-		<link rel="stylesheet" type="text/css" href="selectize/dist/css/selectize.bootstrap3.css">
+
 	</head>
 	
 	<body>
@@ -265,19 +264,14 @@ $gym_options .= "</optgroup>";
 						</tr>
 						<tr>
 							<td>Main Gym: </td>
-							<td><select id="select-gym" name="gymid">
+							<td><select id="select-gym" class="form-control" name="gymid">
 									<option value="">Select a Gym...</option>
 									<?php echo $gym_options; ?>
 									
 								</select>
 							</td>
 						</tr>
-						<script>
-							$("#select-gym").selectize({
-								create: false,
-								
-							});
-						</script>
+
 						<tr>
 							<td>Birthday: </td>
 							<td><input class="input form-control" value="<?php echo $userdataarray['birthday']; ?>" type="date" name="birthday"></td>

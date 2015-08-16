@@ -75,8 +75,6 @@ $gym_options .= "</optgroup>";
 		<script src="js/sitePath.js"></script>
 		
 		<script src="js/uservoice.js"></script>
-		<script src="selectize/dist/js/standalone/selectize.js"></script>
-		<link rel="stylesheet" type="text/css" href="selectize/dist/css/selectize.bootstrap3.css">
 		
 		
 		<link rel="stylesheet" type="text/css" href="css/mycss.css">

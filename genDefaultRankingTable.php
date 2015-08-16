@@ -50,15 +50,6 @@ function genRankingTable($climbType,$gym_options,$userid_req,$gymid) {
 			</select>
 					
 				
-			<script>
-				$("#'.$climbType.'SelectGym").selectize({
-					create: false,
-					sortField: {
-						field: "text",
-						direction: "asc"
-					}
-				});
-			</script>
 	
 		</div>
 	 * 

@@ -56,16 +56,7 @@ function updateCountryGyms() {
 				
 				document.getElementById("select-gym").setAttribute("onchange","updateGymEvents()");
 			}
-			//call selectizer on the select input
-			
-			/*
-			$("#select-gym").selectize({
-				create: false,
-				sortField: {
-					field: 'text',
-					direction: 'asc'
-				}
-			});*/
+
 		},
 		error: function(){
 			alert('Error in AJAX call');

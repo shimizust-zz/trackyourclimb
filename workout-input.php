@@ -105,12 +105,9 @@ $main_cragid = $main_climbingarea['main_crag'];
 		<script src="js/workoutInputTable.js"></script>
 		<script src="js/uservoice.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/mycss.css">
-		<script src="selectize/dist/js/standalone/selectize.js"></script>
 		<script src="js/changeClimbingAreaType.js"></script>
 		<script src ="js/validation/dateCheck.js"></script>
 		
-		
-		<link rel="stylesheet" type="text/css" href="selectize/dist/css/selectize.bootstrap3.css">
 				
 	</head>
 

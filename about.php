@@ -60,7 +60,6 @@
 						<li><a href="http://www.flotcharts.org/">Flot</a></li>
 						<li><a href="https://github.com/Serhioromano/bootstrap-calendar">Bootstrap-Calendar</a></li>
 						<li><a href="https://phpexcel.codeplex.com/">PHPExcel</a></li>
-						<li><a href="http://brianreavis.github.io/selectize.js/">Selectize</a></li>
 						<li><a href="http://jqvmap.com/">JQVMap</a></li>
 						<li>The Noun Project</li>
 						<ul>

@@ -164,10 +164,7 @@ $workoutsegments = $stmt4->fetchAll(PDO::FETCH_ASSOC);
 		</script>
 		<script src="js/uservoice.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/mycss.css">
-		<script src="selectize/dist/js/standalone/selectize.js"></script>
 		<script src ="js/validation/dateCheck.js"></script>
-		
-		<link rel="stylesheet" type="text/css" href="selectize/dist/css/selectize.bootstrap3.css">
 		
 	</head>
 
@@ -444,7 +441,7 @@ $workoutsegments = $stmt4->fetchAll(PDO::FETCH_ASSOC);
 				<label for="gymid">Climbing Area: <a href="add-gym.php" id="add-gym-text">
 					(Add a new climbing area)</a> </label>
 				<div id="select-gym-div">
-					<select id="select-gym" name="gymid" required>
+					<select id="select-gym" class="form-control" name="gymid" required>
 						<option value="">Select a Gym...</option>
 						<?php echo $gym_options; ?>
 						
@@ -452,15 +449,6 @@ $workoutsegments = $stmt4->fetchAll(PDO::FETCH_ASSOC);
 				</div>
 			</div>
 			
-			<script>
-				$("#select-gym").selectize({
-					create: false,
-					sortField: {
-						field: 'text',
-						direction: 'asc'
-					}
-				});
-			</script>
 			
 			<!--Date Picker-->	
 			
