@@ -815,9 +815,18 @@ h2,h3,h4 {
 }
 
 //Modification to jqvmap CSS
-.jqvmap-zoomin, .jqvmap-zoomout
-		{
-			width: 15px;
-			height: 15px;
-		}
+.jqvmap-zoomin, .jqvmap-zoomout {
+	width: 15px;
+	height: 15px;
+}
+
+//Modification to bootstrap-calendar
+#cal-slide-content {
+	background-color: #888888;
+	background-image: none;
+}
+
+#cal-slide-content:hover {
+	background-color: #777777;
+}
 

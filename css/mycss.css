@@ -753,3 +753,10 @@ h2, h3, h4 {
   width: 15px;
   height: 15px;
 }
+#cal-slide-content {
+  background-color: #888;
+  background-image: none;
+}
+#cal-slide-content:hover {
+  background-color: #777;
+}

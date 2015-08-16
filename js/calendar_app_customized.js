@@ -6,7 +6,7 @@
 	var options = {
 		events_source: 'php_dataquery/getEventsJSON.php',
 		view: 'month',
-		tmpl_path: 'bootstrap-calendar-master/tmpls/',
+		tmpl_path: 'bower_components/bootstrap-calendar/tmpls/',
 		tmpl_cache: false,
 		onAfterEventsLoad: function(events) {
 			if(!events) {

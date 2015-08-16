@@ -8,7 +8,7 @@
   "homepage": "www.trackyourclimb.com",
   "dependencies": {
 	"flot": "~0.8.3",
-	"bootstrap-calendar": "~0.2.4",
+	"bootstrap-calendar": "https://github.com/Serhioromano/bootstrap-calendar.git#a8a879d77ca7c619fd19400c472435667a82a6db",
 	"jqvmap": "manifestinteractive/jqvmap"
   },
   "private": true

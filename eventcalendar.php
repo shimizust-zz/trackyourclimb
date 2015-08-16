@@ -26,13 +26,11 @@ include 'cookiecheck.php';
 		<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 		<script src="js/bootstrap.js"></script>
-		<script src="bootstrap-calendar-master/js/climb_calendar.js"></script>
-		<script src="bootstrap-calendar-master/js/climb_calendar_app.js"></script>
+		<script src="bower_components/bootstrap-calendar/js/calendar.js"></script>
 		<script src="js/uservoice.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="bower_components/bootstrap-calendar/css/calendar.css">
 		<link rel="stylesheet" type="text/css" href="css/mycss.css">
-		
-		<link rel="stylesheet" type="text/css" href="bootstrap-calendar-master/css/calendar.css">
-		
 
 	</head>
 
@@ -56,7 +54,6 @@ include 'cookiecheck.php';
 						<button class="btn btn-warning" data-calendar-view="year">Year</button>
 						<button class="btn btn-warning active" data-calendar-view="month">Month</button>
 						<button class="btn btn-warning" data-calendar-view="week">Week</button>
-						<!--<button class="btn btn-warning" data-calendar-view="day">Day</button>-->
 					</div>
 				</div>
 				</div>
@@ -71,7 +68,7 @@ include 'cookiecheck.php';
 				<script type="text/javascript">
 					var calendar = $("#calendar").calendar(
 						{
-							tmpl_path: "bootstrap-calendar-master/tmpls/",
+							tmpl_path: "bower_components/bootstrap-calendar/tmpls/",
 							events_source: function () { return []; }
 						});         
 				</script>
@@ -79,7 +76,7 @@ include 'cookiecheck.php';
 			</div>
 		</div>
 		
-		<script src="bootstrap-calendar-master/js/climb_calendar_app.js"></script>
+		<script src="js/calendar_app_customized.js"></script>
 		<div id="scroll-padding"></div>
 		<?php require("footer.php"); ?>
 	</body>
