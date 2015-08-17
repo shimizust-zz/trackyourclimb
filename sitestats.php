@@ -23,11 +23,13 @@ include 'getNumUsers.php';
 		
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 		<script src="js/bootstrap.js"></script>
-		<script src="flot/jquery.flot.js"></script>	
-		<script src="flot/jquery.flot.axislabels.js"></script>
-		<script src="flot/jquery.flot.categories.js"></script>
-		<script src="flot/jquery.flot.tickrotor.js"></script>
-		<script src="flot/jquery.flot.resize.js"></script>
+		
+		<script src="bower_components/flot/jquery.flot.js"></script>	
+		<script src="bower_components/flot-axislabels/jquery.flot.axislabels.js"></script>
+		<script src="bower_components/flot/jquery.flot.categories.js"></script>
+		<script src="bower_components/flot-tickrotor/jquery.flot.tickrotor.js"></script>
+		<script src="bower_components/flot/jquery.flot.resize.js"></script>
+		
 		<script src="js/sitePath.js"></script>
 		<script src="js/uservoice.js"></script>
 		<script src="js/plots/get_update_ClimbDataAll.js"></script>

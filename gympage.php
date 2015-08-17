@@ -35,11 +35,13 @@ include 'genDefaultRankingTable.php';
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 		<script src="js/bootstrap.js"></script>
 
-		<script src="flot/jquery.flot.js"></script>	
-		<script src="flot/jquery.flot.axislabels.js"></script>
-		<script src="flot/jquery.flot.categories.js"></script>
-		<script src="flot/jquery.flot.tickrotor.js"></script>
-		<script src="flot/jquery.flot.resize.js"></script>
+
+		<script src="bower_components/flot/jquery.flot.js"></script>	
+		<script src="bower_components/flot-axislabels/jquery.flot.axislabels.js"></script>
+		<script src="bower_components/flot/jquery.flot.categories.js"></script>
+		<script src="bower_components/flot-tickrotor/jquery.flot.tickrotor.js"></script>
+		<script src="bower_components/flot/jquery.flot.resize.js"></script>
+
 		<script src="js/sitePath.js"></script>
 		
 		<script src="js/rankings/get_update_rankings.js"></script>
@@ -219,5 +221,5 @@ include 'genDefaultRankingTable.php';
 		
 		<?php require("footer.php"); ?>
 	</body>
-	
+
 </html>
