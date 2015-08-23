@@ -30,7 +30,7 @@ include 'cookiecheck.php';
 		<script src="js/uservoice.js"></script>
 		
 		<link rel="stylesheet" type="text/css" href="bower_components/bootstrap-calendar/css/calendar.css">
-		<link rel="stylesheet" type="text/css" href="css/mycss.css">
+		<link rel="stylesheet" type="text/css" href="style.php/mycss.scss">
 
 	</head>
 

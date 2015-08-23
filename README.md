@@ -53,11 +53,7 @@ We welcome community contributions, and we've tried to make it very easy to get 
 
 ### Changing CSS ###
 
-The project uses SCSS, which adds better functionality to the existing CSS syntax. All of the site's custom CSS is written in `${REPO}\css\scss\mycss.scss`. The site itself uses `${REPO}\css\mycss.css`, though. To compile the .scss to .css, hit: 
-````
-localhost/trackyourclimb/style.php/css/scss/mycss.scss
-````
-in your browser. This action will  write a new `mycss.css`. Make sure to disable your browser cache so immediate changes will take effect.
+The project uses SCSS, which adds better functionality to the existing CSS syntax. All of the site's custom CSS is written in `${REPO}\css\scss\mycss.scss`.
 
 
 ## Contribution guidelines ##

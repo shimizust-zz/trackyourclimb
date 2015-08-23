@@ -36,7 +36,7 @@
 		</script>
 		<script src="js/uservoice.js"></script>
 		<link href='http://fonts.googleapis.com/css?family=Lato:900' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" type="text/css" href="css/mycss.css">
+		<link rel="stylesheet" type="text/css" href="style.php/mycss.scss">
 		<style>
 			h1 {
 				font-size: 5.5em;

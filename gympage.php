@@ -46,7 +46,7 @@ include 'genDefaultRankingTable.php';
 		
 		<script src="js/rankings/get_update_rankings.js"></script>
 		<script src="js/plots/get_update_ClimbDataAll.js"></script>
-		<link rel="stylesheet" type="text/css" href="css/mycss.css">
+		<link rel="stylesheet" type="text/css" href="style.php/mycss.scss">
 		
 		<script>
 			var gymid = <?php echo $gymid?>;

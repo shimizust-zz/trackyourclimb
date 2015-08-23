@@ -86,7 +86,7 @@ $routeGradingID = $userprefs['routeGradingSystemID'];
 		<!-- Latest compiled and minified CSS -->
 		<link rel="icon" href="images/favicon.ico" type="image/x-icon">
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-		<link rel="stylesheet" type="text/css" href="css/mycss.css">
+		<link rel="stylesheet" type="text/css" href="style.php/mycss.scss">
 		
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 		<script src="js/bootstrap.js"></script>
@@ -112,7 +112,7 @@ $routeGradingID = $userprefs['routeGradingSystemID'];
 		</script>
 		<script src="js/plots/get_update_ClimbDataAll.js"></script>
 		
-		<link rel="stylesheet" type="text/css" href="css/mycss.css">
+		<link rel="stylesheet" type="text/css" href="style.php/mycss.scss">
 	</head>
 
 	<body>

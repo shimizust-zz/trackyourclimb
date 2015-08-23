@@ -66,7 +66,7 @@ if (isset($_POST['event-submit'])) {
 		<link rel="icon" href="images/favicon.ico" type="image/x-icon">
 		
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-		<link rel="stylesheet" type="text/css" href="css/mycss.css">
+		<link rel="stylesheet" type="text/css" href="style.php/mycss.scss">
 		<link rel="stylesheet" type="text/css" href="css/datepicker.css">
 		
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
