@@ -4,9 +4,9 @@
 include 'dbconnect.php';
 
 //check that user has a valid cookie, redirect if no valid cookie
-include 'cookiecheck.php';	
+include 'php_common/cookiecheck.php';	
 include 'php_dataquery/getCountryNameFromCode.php';	 		
-include 'cleanURL.php';
+include 'php_common/cleanURL.php';
 
 //URL should have an event id query attached
 if (isset($_GET['event_id'])) {
@@ -47,7 +47,7 @@ if (isset($_GET['event_id'])) {
 	<body>
 		<div id="wrap">
 			<div id="main">
-				<?php include_once("analyticstracking.php") ?>
+				<?php include_once("php_common/analyticstracking.php") ?>
 				<?php require("navigation.php"); ?>
 				
 				<div class="container">
@@ -137,6 +137,6 @@ if (isset($_GET['event_id'])) {
 		
 		
 		
-		<?php require("footer.php"); ?>
+		<?php require("php_common/footer.php"); ?>
 	</body>
 </html>

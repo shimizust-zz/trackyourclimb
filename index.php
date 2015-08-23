@@ -76,15 +76,15 @@
 				}(document, 'script', 'facebook-jssdk'));</script>
 				
 				
-				<?php include_once("analyticstracking.php") ?>
+				<?php include_once("php_common/analyticstracking.php") ?>
 <?php 
 
 //connect to database
 include 'dbconnect.php';
 
-include 'getNumClimbs.php';
-include 'getNumUsers.php';
-include 'getNumGyms.php';
+include 'php_dataquery/getNumClimbs.php';
+include 'php_dataquery/getNumUsers.php';
+include 'php_dataquery/getNumGyms.php';
 /*
  * This login page has the following scenarios:
  * 1) If user already has valid cookies for the site, then send them to
@@ -325,7 +325,7 @@ else {
 
 
 
-<?php require("footer.php"); ?>
+<?php require("php_common/footer.php"); ?>
 </body>
 
 <div class="modal fade" id="login-modal" role="dialog">

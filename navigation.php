@@ -1,7 +1,7 @@
 <?php
 //Find out user's gym
 
-include 'getUserGym.php';
+include 'php_dataquery/getUserGym.php';
 
 ?>
 <div>

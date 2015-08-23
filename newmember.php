@@ -4,7 +4,7 @@
 include 'dbconnect.php';
 
 //check that user has a valid cookie, redirect if no valid cookie
-include 'cookiecheck.php';	
+include 'php_common/cookiecheck.php';	
 
 include 'submit-workoutprefs.php';	 	
 			
@@ -40,7 +40,7 @@ include 'submit-workoutprefs.php';
 	</head>
 
 	<body>
-		<?php include_once("analyticstracking.php") ?>
+		<?php include_once("php_common/analyticstracking.php") ?>
 		<?php require("navigation.php"); ?>
 		
 

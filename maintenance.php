@@ -37,7 +37,7 @@
 		</style>
 	</head>
 	<body>
-	<?php include_once("analyticstracking.php") ?>
+	<?php include_once("php_common/analyticstracking.php") ?>
 	<br><br>
 	 <div id="splash-jumbotron">
 

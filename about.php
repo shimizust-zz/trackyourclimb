@@ -26,7 +26,7 @@
 		<div id="wrap">
 		<div id="main">
 			
-			<?php include_once("analyticstracking.php") ?>
+			<?php include_once("php_common/analyticstracking.php") ?>
 			
 			<a href="index.php"><span class="glyphicon glyphicon-circle-arrow-left"></span> Return to main page.</a>
 			
@@ -85,6 +85,6 @@
 		
 		
 	</div>
-		<?php require("footer.php"); ?>
+		<?php require("php_common/footer.php"); ?>
 	</body>
 </html>

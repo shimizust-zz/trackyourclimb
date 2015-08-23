@@ -3,7 +3,7 @@
 include 'dbconnect.php';
 
 //check that user has a valid cookie, redirect if no valid cookie
-include 'cookiecheck.php';				
+include 'php_common/cookiecheck.php';				
 			
 $workout_id_prev = $_GET['wid'];
 $showChangesSaved = 0; 
@@ -169,7 +169,7 @@ $workoutsegments = $stmt4->fetchAll(PDO::FETCH_ASSOC);
 	</head>
 
 	<body>
-		<?php include_once("analyticstracking.php") ?>
+		<?php include_once("php_common/analyticstracking.php") ?>
 		<?php require("navigation.php"); ?>
 
 

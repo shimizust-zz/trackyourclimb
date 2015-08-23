@@ -3,7 +3,7 @@
 include 'dbconnect.php';
 
 //check that user has a valid cookie, redirect if no valid cookie
-include 'cookiecheck.php';	
+include 'php_common/cookiecheck.php';	
 
 //extract all workouts by a user
 $stmt4 = $db->prepare("SELECT * FROM workouts LEFT OUTER JOIN 
@@ -15,7 +15,7 @@ $stmt4->execute(array(':userid'=>$userid));
 $allworkouts = $stmt4->fetchAll(PDO::FETCH_ASSOC);
 
 include 'BoulderRouteGradingSystems.php';
-include 'getUserGradingPrefs.php';
+include 'php_dataquery/getUserGradingPrefs.php';
 
 /** PHPExcel_IOFactory */
 include 'vendor/phpoffice/phpexcel/Classes/PHPExcel/IOFactory.php';

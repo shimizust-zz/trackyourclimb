@@ -4,7 +4,7 @@
 include 'dbconnect.php';
 
 //check that user has a valid cookie, redirect if no valid cookie
-include 'cookiecheck.php';	
+include 'php_common/cookiecheck.php';	
 
 include 'php_dataquery/getCountryNameFromCode.php';
 $success = 0;
@@ -57,7 +57,7 @@ if (isset($_POST['gymedit-submit']) && isset($_GET['gymid'])) {
 	<body>
 		<div id="wrap">
 			<div id="main">
-				<?php include_once("analyticstracking.php") ?>
+				<?php include_once("php_common/analyticstracking.php") ?>
 				<?php require("navigation.php"); ?>
 				
 				<div class="container">
@@ -110,6 +110,6 @@ if (isset($_POST['gymedit-submit']) && isset($_GET['gymid'])) {
 		
 		
 		
-		<?php require("footer.php"); ?>
+		<?php require("php_common/footer.php"); ?>
 	</body>
 </html>

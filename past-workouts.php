@@ -4,8 +4,8 @@
 include 'dbconnect.php';
 
 //check that user has a valid cookie, redirect if no valid cookie
-include 'cookiecheck.php';	
-include 'phparray-to-htmltable.php';
+include 'php_common/cookiecheck.php';	
+include 'php_common/phparray-to-htmltable.php';
 include 'BoulderRouteGradingSystems.php';
 
 $numworkoutsperpage = 60;
@@ -19,7 +19,7 @@ $stmt4 = $db->prepare("SELECT *,workouts.workout_id as w_workout_id, workout_seg
 	grade_index ASC");
 $stmt4->execute(array(':userid'=>$userid));
 
-include 'getUserGradingPrefs.php';
+include 'php_dataquery/getUserGradingPrefs.php';
 
 
 $allworkouts = $stmt4->fetchAll(PDO::FETCH_ASSOC);
@@ -213,7 +213,7 @@ return $workout_array;
 	<body>
 		<div id="wrap">
 			<div id="main">
-				<?php include_once("analyticstracking.php") ?>
+				<?php include_once("php_common/analyticstracking.php") ?>
 				<?php require("navigation.php"); ?>
 				
 				<div class="container">
@@ -227,6 +227,6 @@ return $workout_array;
 				</div>
 			</div>
 		</div>
-		<?php require("footer.php"); ?>
+		<?php require("php_common/footer.php"); ?>
 </body>
 </html>

@@ -4,11 +4,11 @@
 include 'dbconnect.php';
 
 //check that user has a valid cookie, redirect if no valid cookie
-include 'cookiecheck.php';	
+include 'php_common/cookiecheck.php';	
 		 		
 include 'genDefaultRankingTable.php';				
 
-include 'getWorkoutData.php';		
+include 'php_dataquery/getWorkoutData.php';		
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -34,7 +34,7 @@ include 'getWorkoutData.php';
 
 		<div id="wrap">
 			<div id="main">
-			<?php include_once("analyticstracking.php") ?>
+			<?php include_once("php_common/analyticstracking.php") ?>
 			<?php require("navigation.php"); ?>
 			
 			<!--website content here-->
@@ -125,7 +125,7 @@ include 'getWorkoutData.php';
 
 					<div class="col-sm-6 col-md-6">
 						<div class="col-sm-12">
-							<?php include 'getUserEvents.php'; ?>
+							<?php include 'php_dataquery/getUserEvents.php'; ?>
 							<label><?php echo $header_event_text ?></label>
 							<?php echo $event_result; ?>
 							<hr>
@@ -143,7 +143,7 @@ include 'getWorkoutData.php';
 		
 		
 		
-		<?php require("footer.php"); ?>
+		<?php require("php_common/footer.php"); ?>
 		
 	</body>
 </html>

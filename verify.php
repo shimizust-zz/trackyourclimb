@@ -79,7 +79,7 @@ else {
 	<body>
 		<div id="wrap">
 			<div id="main">
-				<?php include_once("analyticstracking.php") ?>
+				<?php include_once("php_common/analyticstracking.php") ?>
 				<?php require("navigation.php"); ?>
 				Hey There.
 				<div class="container-fluid">
@@ -94,6 +94,6 @@ else {
 		
 		
 		
-		<?php require("footer.php"); ?>
+		<?php require("php_common/footer.php"); ?>
 	</body>
 </html>

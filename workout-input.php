@@ -3,7 +3,7 @@
 include 'dbconnect.php';
 
 //check that user has a valid cookie, redirect if no valid cookie
-include 'cookiecheck.php';				
+include 'php_common/cookiecheck.php';				
 			
 			
 //extract their user preferences
@@ -112,7 +112,7 @@ $main_cragid = $main_climbingarea['main_crag'];
 	</head>
 
 	<body>
-		<?php include_once("analyticstracking.php") ?>
+		<?php include_once("php_common/analyticstracking.php") ?>
 		<?php require("navigation.php"); ?>
 
 

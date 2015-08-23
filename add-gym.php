@@ -4,7 +4,7 @@
 include 'dbconnect.php';
 
 //check that user has a valid cookie, redirect if no valid cookie
-include 'cookiecheck.php';	
+include 'php_common/cookiecheck.php';	
 		 		
 $msg = "";
 if (isset($_POST['gym-submit'])) {
@@ -81,7 +81,7 @@ $countryCode = $countryResult['countryCode'];
 	</head>
 
 	<body>
-		<?php include_once("analyticstracking.php") ?>
+		<?php include_once("php_common/analyticstracking.php") ?>
 		<?php require("navigation.php"); ?>
 		
 		<?php echo $msg; ?>

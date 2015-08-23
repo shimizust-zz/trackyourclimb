@@ -14,7 +14,7 @@ else {
 }
 
 include '../dbconnect.php';
-//include '../cookiecheck.php';
+//include '../php_common/cookiecheck.php';
 
 $stmt2 = $db->prepare("SELECT gymid, gym_name, city, state, countryCode FROM gyms WHERE countryCode=:countryCode AND indoor=:indoor ORDER BY state, gym_name ");
 //build up gym option table

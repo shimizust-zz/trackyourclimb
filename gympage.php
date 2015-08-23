@@ -1,7 +1,7 @@
 <?php
 
 include 'dbconnect.php';
-include 'cookiecheck.php';
+include 'php_common/cookiecheck.php';
 if (isset($_GET['gymid'])) {
 	$gymid = $_GET['gymid'];
 }
@@ -99,7 +99,7 @@ include 'genDefaultRankingTable.php';
 	<body>
 		<div id="wrap">
 			<div id="main">
-				<?php include_once("analyticstracking.php") ?>
+				<?php include_once("php_common/analyticstracking.php") ?>
 				<?php require("navigation.php"); ?>
 				
 				<div class="container">
@@ -219,7 +219,7 @@ include 'genDefaultRankingTable.php';
 		
 		
 		
-		<?php require("footer.php"); ?>
+		<?php require("php_common/footer.php"); ?>
 	</body>
 
 </html>

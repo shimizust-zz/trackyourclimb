@@ -4,7 +4,7 @@
 include 'dbconnect.php';
 
 //check that user has a valid cookie, redirect if no valid cookie
-include 'cookiecheck.php';	
+include 'php_common/cookiecheck.php';	
 		 		
 				
 				
@@ -37,7 +37,7 @@ include 'cookiecheck.php';
 	<body>
 		<div id="wrap">
 			<div id="main">
-				<?php include_once("analyticstracking.php") ?>
+				<?php include_once("php_common/analyticstracking.php") ?>
 				<?php require("navigation.php"); ?>
 				
 				<div class="container">
@@ -78,6 +78,6 @@ include 'cookiecheck.php';
 		
 		<script src="js/calendar_app_customized.js"></script>
 		<div id="scroll-padding"></div>
-		<?php require("footer.php"); ?>
+		<?php require("php_common/footer.php"); ?>
 	</body>
 </html>
