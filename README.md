@@ -1,5 +1,6 @@
-# README #
+# TrackYourClimb [![Build Status](https://travis-ci.org/shimizust/trackyourclimb.svg)](https://travis-ci.org/shimizust/trackyourclimb)
 
+----------
 
 ## Quick Summary ##
 
@@ -49,16 +50,29 @@ We welcome community contributions, and we've tried to make it very easy to get 
 1. In your browser, navigate to `localhost/trackyourclimb` (use whatever you named the root folder). You should see the trackyourclimb website with no data.
 2. This is a local version of the website you can play around with and test out your changes, although it requires internet access for some libraries delivered from CDNs.
 
-----------
+#### Running Tests ####
+1. Install PHPUnit using these instructions: [https://phpunit.de/getting-started.html](https://phpunit.de/getting-started.html)
+2. All tests are contained under /tests/ with the filename format: *Test.php
+3. From project root, run the command `phpunit tests` to determine if tests pass.
 
-### Changing CSS ###
+#### Changing CSS ####
 
 The project uses SCSS, which adds better functionality to the existing CSS syntax. All of the site's custom CSS is written in `${REPO}\css\scss\mycss.scss`.
 
 
 ## Contribution guidelines ##
 
-[TO DO]
+1. If you have a bug fix, feature, design change, etc., post an issue in the Github repository.
+2. If we decide that this change makes sense, someone will be assigned the fix.
+3. After forking the repository and implementing the change, issue a pull request. If approved, the change will be merged. Shortly thereafter, the website will be manually synced with the Github repo.
+
+Here are some areas of contribution:
+- bug fixes
+- refactoring code
+- making the design better
+- adding new features
+- improving the build process
+- writing tests
 
 ## Who do I talk to? ##
 
