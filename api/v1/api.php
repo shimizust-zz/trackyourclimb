@@ -1,65 +1,131 @@
 <?php
 
+/*
+Endpoints/Args:
+- users
+	- | GET : get number of users
+	- me/login | POST : verify user credentials
+	- me/data | GET : get user data
+	- me/preferences | GET : get user preferences
+- 
+*/
 
-require_once 'API.class.php';
+require_once 'APIBase.php';
+require '../../db.php';
 
-
-class MyAPI extends API 
+class MyAPI extends APIBase 
 {
 	protected $user;
+	protected $db;
 	
 	public function __construct($request,$origin) {
 		parent::__construct($request);
 		
+		//$args is is an array of arguments after the endpoint
+		$this->db = DB::getDBConnection();
+	}
+	
+	protected function verifyUser() {
+		//Verify user making request using HTTP Basic Auth
+		//Return an array stating whether user is verified and the userid
+		// {'verified': {0 or 1}, 'userid'=>{userid}}
 		
+		$headers = getallheaders();
+		$auth = $headers["Authorization"];
+		if ($auth) { //property exists
+			//Get decoded password
+			$userpwd = explode(":",base64_decode(explode(" ", $auth)[1]), 2); //only look for first instance of colon (allowing ':' in password)
+			$username = $userpwd[0];
+			$pwd = $userpwd[1];
+			
+			return $this->_verifyUsernamePassword($username, $pwd);
+		} else {
+			return array('verified'=>'0');
+		}
+	}
+	
+	private function _verifyUsernamePassword($username, $password) {
+		$stmt = $this->db->prepare('SELECT userid,username,pass_hash FROM users WHERE username=?');
+		$stmt->execute(array($username));
+		$userhash_result = $stmt->fetch(PDO::FETCH_ASSOC);
+		$checkuserexists = $stmt->rowCount();
+		
+		if ($checkuserexists && password_verify($password,$userhash_result['pass_hash'])) {
+			return array('verified'=>'1','userid'=>$userhash_result['userid']);
+		}
+		else {
+			return array('verified'=>'0');
+		}
 	}
 	
 
 	protected function users() {
 	/*
-		users/me/login POST : verify user credentials
-		users/me/data GET : get user data
-		users/me/preferences GET : get user preferences
+	 * users/ GET : get number of users in system
 	*/
-	
-		
-	require_once '../../dbconnect.php';
 
+		if (empty($this->args) && $this->method=='GET') {
+			//return number of users
+			$stmt = $this->db->prepare("SELECT COUNT(username) FROM users");
+			$stmt->execute();
+			$users_result = $stmt->fetch(PDO::FETCH_NUM);
+			return array("number"=>$users_result[0]);	
+		} 
 		
-	if ($this->args[0] == 'me') {
-	
-		if ($this->args[1] == 'login') {
-			
-			if ($this->method=='POST') {
-			
-				$post = json_decode(file_get_contents('php://input'),true); //return a php array
-				$info = $post['info'];
-				
-				//check if array key exists for username and password
-				if (array_key_exists('username',$info) && array_key_exists('pass',$info)) {
-					$username = $info['username'];
-					$pass = $info['pass'];
-					
-					$stmt = $db->prepare('SELECT username,pass_hash FROM users WHERE username=?');
-					$stmt->execute(array($info['username']));
-					$userhash_result = $stmt->fetch(PDO::FETCH_ASSOC);
-					$checkuserexists = $stmt->rowCount();
-					
-					if ($checkuserexists && password_verify($info['pass'],$userhash_result['pass_hash'])) {
-						return array("verified"=>"1","error"=>"");
-					}
-					else {
-						return array("verified"=>"0","error"=>"Incorrect username or password");
-					}
-					
+		else if ($this->args[0] == 'user' && $this->args[1] == 'valid' && $this->method == 'GET' && count($this->args) == 2) {
+			//validate user using Basic Auth and return whether user is valid along with userid
+			return $this->verifyUser();	
+		} 
+		
+		else if (is_numeric($this->args[0])) {
+			$userid = $this->args[0];
+			if ($this->args[1] == 'prefs' && $this->method == 'GET') {
+				// get whether the user is verified, and return user preferences
+				$verifiedResult = $this->verifyUser();
+				if ($verifiedResult['verified']) {
+					$stmt = $this->db->prepare("SELECT * FROM userprefs WHERE userid = ?");
+					$stmt->execute(array($userid));
+					$userprefs_result = $stmt->fetch(PDO::FETCH_ASSOC);
+					return $userprefs_result;
 				} else {
-					return array("verified"=>"0","error"=>"A required field was not specified. These were in info:".print_r(array_keys($info))." and the info contains: ".print_r($info));
+					return $verifiedResult;
+				}				
+			}
+			
+			else if ($this->args[1] == 'prefs' && $this->method == 'POST') {
+				//modify user prefs
+				$verifiedResult = $this->verifyUser();
+				if ($verifiedResult['verified']) {
+					//decode json in post body
+					$info = json_decode($_POST['info'],true);
+					
+					$show_boulder = $info['show_boulder'];
+					$show_TR = $info['show_TR'];
+					//$show_
+					
+					$stmt = $this->db->prepare("SELECT * FROM userprefs WHERE userid = ?");
+					$stmt->execute(array($userid));
+					$userprefs_result = $stmt->fetch(PDO::FETCH_ASSOC);
+					return $userprefs_result;
+				} else {
+					return $verifiedResult;
+				}
+			}
+			
+			else if ($this->args[1] == 'profile' && $this->method == 'GET') {
+				//get userprofile data
+				$verifiedResult = $this->verifyUser();
+				if ($verifiedResult['verified']) {
+					$stmt = $this->db->prepare("SELECT * FROM userdata WHERE userid = ?");
+					$stmt->execute(array($userid));
+					$userprofile_result = $stmt->fetch(PDO::FETCH_ASSOC);
+					return $userprofile_result;
+				} else {
+					return $verifiedResult;
 				}
 			}
 			
 		}
-
-	}
 	}
 	
 	protected function workouts() {
@@ -71,63 +137,61 @@ class MyAPI extends API
 			
 	*/
 	
-	require '../../dbconnect.php';
-		
-	if ($this->args[0] == 'workout') {
+		require '../../dbconnect.php';
+			
+		if ($this->args[0] == 'workout') {
 
-		if ($this->method=='POST') {
-			//add a workout
-			
-			$info = json_decode($_POST['info'],true);
-			
-			//verify user credentials
-			$verified = $this->_verifyuser($info);
-			
-			if ($verified['verified']) {
-				$userid = $verified['userid'];
-				$gymid = $info['gymid'];
-				$date_workout = $info['date'];
+			if ($this->method=='POST') {
+				//add a workout
 				
-				$boulder = $info['boulder'];
-				$boulder_notes = $info['boulder_notes'];
-				$tr = $info['tr'];
-				$tr_notes = $info['tr_notes'];
-				$lead = $info['lead'];
-				$lead_notes = $info['lead_notes'];
-				$other_notes = $info['other_notes'];
+				$info = json_decode($_POST['info'],true);
 				
-				//Create workout entry (doesn't have points logged yet)
-				$stmt = $db->prepare("INSERT INTO workouts (userid,date_workout,gymid,boulder_notes,tr_notes,lead_notes,other_notes) 
-				VALUES (:userid,:date_workout,:gymid,:boulder_notes,:tr_notes,
-				:lead_notes,:other_notes)");
+				//verify user credentials
+				$verified = $this->_verifyuser($info);
 				
-				$stmt->execute(array(':userid'=>$userid,':date_workout'=>$date_workout,
-				':gymid'=>$gymid,':boulder_notes'=>$boulder_notes,':tr_notes'=>
-				$tr_notes,':lead_notes'=>$lead_notes,':other_notes'=>$other_notes));
-				
-				$workoutid = $db->lastInsertId(); 
-				
-				
-				
-				return $gymid;
-			}
-			
-		}
-		
-		
-	}
-    else if empty($this->args) {
-		if ($this->method=="GET") {
-			if ($_GET['data']=="number") {
-				//return the total number of workouts logged
+				if ($verified['verified']) {
+					$userid = $verified['userid'];
+					$gymid = $info['gymid'];
+					$date_workout = $info['date'];
+					
+					$boulder = $info['boulder'];
+					$boulder_notes = $info['boulder_notes'];
+					$tr = $info['tr'];
+					$tr_notes = $info['tr_notes'];
+					$lead = $info['lead'];
+					$lead_notes = $info['lead_notes'];
+					$other_notes = $info['other_notes'];
+					
+					//Create workout entry (doesn't have points logged yet)
+					$stmt = $db->prepare("INSERT INTO workouts (userid,date_workout,gymid,boulder_notes,tr_notes,lead_notes,other_notes) 
+					VALUES (:userid,:date_workout,:gymid,:boulder_notes,:tr_notes,
+					:lead_notes,:other_notes)");
+					
+					$stmt->execute(array(':userid'=>$userid,':date_workout'=>$date_workout,
+					':gymid'=>$gymid,':boulder_notes'=>$boulder_notes,':tr_notes'=>
+					$tr_notes,':lead_notes'=>$lead_notes,':other_notes'=>$other_notes));
+					
+					$workoutid = $db->lastInsertId(); 
+					
+					
+					
+					return $gymid;
+				}
 				
 			}
 			
+			
 		}
-	}
+		else if (empty($this->args)) {
+			if ($this->method=="GET") {
+				if ($_GET['data']=="number") {
+					//return the total number of workouts logged
+					
+				}
+			}
+		}
 	
 	}
-	
 	
 	private function _verifyuser($info) {
 	/**
@@ -135,34 +199,31 @@ class MyAPI extends API
 		
 		Return 1 if user is verified, 0 otherwise
 	*/
-	require '../../dbconnect.php';
-	
-				
-	//check if array key exists for username and password
-	if (array_key_exists('username',$info) && array_key_exists('pass',$info)) {
-		$username = $info['username'];
-		$pass = $info['pass'];
+		require '../../dbconnect.php';
 		
-		$stmt = $db->prepare('SELECT userid,username,pass_hash FROM users WHERE username=?');
-		$stmt->execute(array($info['username']));
-		$userhash_result = $stmt->fetch(PDO::FETCH_ASSOC);
-		$checkuserexists = $stmt->rowCount();
-		
-		if ($checkuserexists && password_verify($info['pass'],$userhash_result['pass_hash'])) {
-			return array('verified'=>'1','userid'=>$userhash_result['userid']);
-		}
-		else {
+					
+		//check if array key exists for username and password
+		if (array_key_exists('username',$info) && array_key_exists('pass',$info)) {
+			$username = $info['username'];
+			$pass = $info['pass'];
+			
+			$stmt = $db->prepare('SELECT userid,username,pass_hash FROM users WHERE username=?');
+			$stmt->execute(array($info['username']));
+			$userhash_result = $stmt->fetch(PDO::FETCH_ASSOC);
+			$checkuserexists = $stmt->rowCount();
+			
+			if ($checkuserexists && password_verify($info['pass'],$userhash_result['pass_hash'])) {
+				return array('verified'=>'1','userid'=>$userhash_result['userid']);
+			}
+			else {
+				return array('verified'=>'0','userid'=>'0');
+			}
+			
+		} else {
 			return array('verified'=>'0','userid'=>'0');
 		}
-		
-	} else {
-		return array('verified'=>'0','userid'=>'0');
-	}
-		
-	}
-	
-
-	
+			
+		}
 }
 
 //The code below actually implements the API and creates a new API object to handle requests

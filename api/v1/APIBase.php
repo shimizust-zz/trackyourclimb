@@ -1,5 +1,5 @@
 <?php
-abstract class API
+abstract class APIBase
 {
 	//from coreymaynard.com/blog/creating-a-restful-api-with-php/
 	/* 	

@@ -9,3 +9,8 @@ vendor/
 
 #ignore bower_components folder containing Bower-installed packages
 bower_components/
+
+#ignore Eclipse project files
+.project
+.settings/
+.buildpath
