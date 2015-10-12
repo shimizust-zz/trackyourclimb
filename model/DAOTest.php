@@ -1,15 +1,14 @@
 <?php
 
 //TODO: Replace with phpunit
-require_once('ClimbingAreaDAO.php');
+include "../core/bootstrap.php";
 
 $CDAO = new ClimbingAreaDAO();
 $areaid = 7;
-$indoor = 0;
+$indoor = 1;
 var_dump($CDAO->climbingAreaExists($areaid, $indoor));
 
 
-require_once('UserDAO.php');
 $UserDAO = new UserDAO();
 echo $UserDAO->getNumUsers();
 

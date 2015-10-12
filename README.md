@@ -1,7 +1,5 @@
 # TrackYourClimb [![Build Status](https://travis-ci.org/shimizust/trackyourclimb.svg)](https://travis-ci.org/shimizust/trackyourclimb)
 
-----------
-
 ## Quick Summary ##
 
 This repository contains the source code for www.trackyourclimb.com, a web app that helps climbers keep track of their climbs and analyze their progress. This project is built with PHP, MySQL, Javascript, CSS, and HTML. 
@@ -73,6 +71,7 @@ Here are some areas of contribution:
 - adding new features
 - improving the build process
 - writing tests
+- documentation
 
 ## Who do I talk to? ##
 

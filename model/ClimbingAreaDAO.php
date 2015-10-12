@@ -40,7 +40,7 @@ class ClimbingAreaDAO {
 		}*/
 	}
 	
-	public static function climbingAreaExists($areaid, $indoor) {
+	public function climbingAreaExists($areaid, $indoor) {
 		//convenience function to check if a climbing area exists
 		//Inputs: $areaid = proposed climbing area id
 		//		  $indoor = 0 (outdoor), 1 (indoor)
