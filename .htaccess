@@ -20,6 +20,11 @@ deny from all
 #redirect to php api controller
 <IfModule mod_rewrite.c>
 RewriteEngine On
+
+RewriteCond %{HTTP_HOST} ^www.trackyourclimb.com [NC]
+RewriteRule ^(.*) http://trackyourclimb.com/$1 [R=301,L] 
+
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 #These rules say that if the requested URI does not match an existing file or directory name (ex. trackyourclimb.com/workout-input.php), then try the following rewrite rule.
@@ -32,6 +37,7 @@ RewriteRule api/v1/(.*)$ api/v1/api.php?request=$1 [QSA,NC,L]
 #the flag [QSA] means that the named capture will be appended to the newly created URI
 #the flag [NC] means that the URIs are not case-sensitive
 #the flag [L] means that the mod_rewrite should not provide any additional rules if this rule matches
+
 
 </IfModule>
 
