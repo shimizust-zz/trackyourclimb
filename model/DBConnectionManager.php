@@ -14,7 +14,7 @@ class DBConnectionManager {
 	public function connect() {
 		
 		//Parse site configuration file into array
-		$siteprop_array = parse_ini_file("../siteproperties.ini");
+		$siteprop_array = parse_ini_file(realpath(dirname(__FILE__)."/../siteproperties.ini"));
 		
 		//connect to database
 		error_reporting( E_ALL ^ ( E_NOTICE | E_WARNING | E_DEPRECATED ) );

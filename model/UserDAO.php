@@ -1,8 +1,8 @@
 <?php
 
-require_once('DBConnectionManager.php');
-require_once('ClimbingAreaDAO.php');
-include '../mailchimp_subscribe.php';
+
+include './../core/bootstrap.php';
+
 
 class UserDAO {
 	
@@ -12,6 +12,78 @@ class UserDAO {
 		$DBManager = new DBConnectionManager();
 		$this->db = $DBManager->connect();
 	}
+	
+	public function checkUsernameExists($username) {
+		$stmt = $this->db->prepare('SELECT username FROM users WHERE username=?');
+		$stmt->execute(array($username));
+		$usercheck_query = $stmt->rowCount();
+		if ($usercheck_query>0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public function checkEmailExists($email) {
+	$stmt = $this->db->prepare('SELECT email FROM users WHERE email = ?');
+		$stmt->execute(array($emailcheck));
+		$emailcheck_query = $stmt->rowCount();
+		if ($emailcheck_query > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public function addUser($username, $password_encrypted, $email) {
+		try {
+			$stmt = $this->db->prepare('INSERT INTO users (username,pass_hash,email) VALUES
+			(:username,:pass,:email)');
+			$stmt->execute(array(':username'=>$username,
+					':pass'=>$password_encrypted,':email'=>$email));
+			$id = $this->db->lastInsertId();
+			return $id;
+		} catch (PDOException $e) {
+			return null;
+		}
+		
+	}
+	
+	public function initializeUserData($userid) {
+		try {
+			$stmt = $this->db->prepare('INSERT INTO userdata (userid) VALUES (?)');
+			$stmt->execute(array($userid));
+			return true;
+		} catch (PDOException $e) {
+			return null;
+		}
+	}
+	
+	public function initializeUserPrefs($userid) {
+		try {
+			$stmt = $this->db->prepare('INSERT INTO userprefs (userid) VALUES (?)');
+			$stmt->execute(array($userid));
+			return true;
+		} catch (PDOException $e) {
+			return null;
+		}
+	}
+	
+	public function initializeUserRecords($userid) {
+		try {
+			//Create entry in userrecords table
+			$stmt = $this->db->prepare('INSERT INTO userrecords (userid,highestBoulderProject,
+			highestBoulderRedpoint,highestBoulderFlash,highestBoulderOnsight,
+			highestTRProject,highestTRRedpoint,highestTRFlash,highestTROnsight,
+			highestLeadProject,highestLeadRedpoint,highestLeadFlash,
+			highestLeadOnsight) VALUES (:userid,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1)');
+				$stmt->execute(array(':userid'=>$userid));
+			return true;
+		} catch (PDOException $e) {
+			return null;
+		}
+	}
+	
 	
 	public function getNumUsers() {
 		//return total number of users
@@ -82,12 +154,12 @@ class UserDAO {
 		if ($prefsarevalid) {
 			//prefs are valid, so write to database
 			$stmtString = "UPDATE userprefs SET ".
-				$this::genPrepareString($changedprefs).
+				DBHelper::genPrepareString($changedprefs).
 				" WHERE userid=:userid";
 			echo $stmtString;
 			$stmt = $this->db->prepare($stmtString);
 			
-			$executeArray = $this::genExecuteArray($changedprefs);
+			$executeArray = DBHelper::genExecuteArray($changedprefs);
 			$executeArray[':userid'] = $userid;
 			
 			return $stmt->execute($executeArray);
@@ -147,17 +219,17 @@ class UserDAO {
 		}
 		
 		if ($profileisvalid) {
-			$prepStr = $this::genPrepareString($changedprofile);
+			$prepStr = DBHelper::genPrepareString($changedprofile);
 			$stmtStr = "UPDATE userdata SET ".$prepStr." WHERE userid=:userid";
 			
 			$stmt = $this->db->prepare($stmtStr);
-			$executeArray = $this->genExecuteArray($changedprofile);
+			$executeArray = DBHelper::genExecuteArray($changedprofile);
 			$executeArray[':userid'] = $userid;
 			return ["result" => $stmt->execute($executeArray)];
 		}
 	}
 	
-	public function addUser($username,$password,$email) {
+	public function addUser2($username,$password,$email) {
 		//return ["result" => true] if successful
 		//return ["result" => false, "error" => {error message}] if not
 		//$password is plaintext for input
