@@ -20,7 +20,7 @@ function getNumGyms($db,$userid) {
 
 function getNumClimbs($db,$userid) {
 	//get number of climbs logged
-	$stmt = $db->prepare("SELECT SUM(reps) FROM workout_segments INNER JOIN workouts ON workouts.workout_id = workout_segments.workout_id WHERE workouts.userid=:userid");
+	$stmt = $db->prepare("SELECT IFNULL(SUM(reps),0) FROM workout_segments INNER JOIN workouts ON workouts.workout_id = workout_segments.workout_id WHERE workouts.userid=:userid");
 	$stmt->execute(array(':userid'=>$userid));
 	
 	$result = $stmt->fetch();
