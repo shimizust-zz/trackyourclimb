@@ -1,5 +1,5 @@
 <?php
-
+include "./core/bootstrap.php";
 ?>
 <!DOCTYPE HTML>
 <html>

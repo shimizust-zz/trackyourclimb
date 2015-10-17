@@ -26,7 +26,7 @@ class UserDAO {
 	
 	public function checkEmailExists($email) {
 	$stmt = $this->db->prepare('SELECT email FROM users WHERE email = ?');
-		$stmt->execute(array($emailcheck));
+		$stmt->execute(array($email));
 		$emailcheck_query = $stmt->rowCount();
 		if ($emailcheck_query > 0) {
 			return true;

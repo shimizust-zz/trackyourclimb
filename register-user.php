@@ -1,6 +1,5 @@
 <?php
 
-//include 'mailchimp_subscribe.php';
 include "./core/bootstrap.php";
 
 //make sure no fields are blank
