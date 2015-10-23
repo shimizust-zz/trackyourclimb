@@ -19,31 +19,32 @@ class WorkoutDAO {
 	
 	public function saveWorkoutInfo($workout_info) {
 		/*
-		 * Input: $workout_data = array(userid, date_workout, gymid, 
+		 * Input: $workout_info = array(userid, date_workout, gymid, 
 		 * boulder_points, TR_points, Lead_points, boulder_notes,
 		 * tr_notes, lead_notes, other_notes) 
+		 * 
+		 * Output: array(result, insertID)
 		 */
 		
-		//get propvals
-		$propVals = array_keys($workout_info);
-		$fieldList = implode(",", $propVals);
-		$placeholderList = array_walk($propVals, function($value, $key) {
-			$value = ":".$value;
-		});
-		$stmt = $this->db->prepare("INSERT INTO workouts (".
-				$fieldList.") VALUES (".$placeholderList.")");
-		$result = $stmt->execute(DBHelper::genExecuteArray($workout_info));
-		return ["result"=>$result];
+		return DBHelper::performInsertQuery($this->db, "workouts", $workout_info);
+		
 	}
 	
 	public function updateWorkoutInfo($workout_id, $workout_info) {
 		
 	}
 	
-	public function saveWorkoutSegments($workout_segments) {
+	public function saveWorkoutSegment($workout_id, $workout_segment) {
 		/*
-		 * Input: $workout_segments = 
+		 * Input: $workout_segment = array(climb_type, ascent_type, grade_index, reps)
+		 * 
+		 * Output: array(result, insertID)
 		 */
+		
+		// Add workout_id to workout_segment array
+		$workout_segment["workout_id"] = $workout_id;
+		return DBHelper::performInsertQuery($this->db, "workout_segments", $workout_segment);
+		
 	}
 	
 	public function updateWorkoutSegments($workout_id, $workout_segments) {

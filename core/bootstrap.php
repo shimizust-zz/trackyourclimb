@@ -1,11 +1,4 @@
 <?php
-/*
-require_once('autoloader.php');
-
-spl_autoload_register('Autoloader::model');
-spl_autoload_register('Autoloader::service');
-//register others here
-*/
 
 $includePaths = array();
 $includePaths[] = __DIR__ . '/../model';

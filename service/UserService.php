@@ -4,7 +4,7 @@
 include "./../core/bootstrap.php";
 include (realpath(dirname(__FILE__).'/../mailchimp_subscribe.php'));
 
-class RegistrationService {
+class UserService {
 	
 	public function __construct() {
 

@@ -17,8 +17,8 @@ $username = $_POST['username'];
 $email = $_POST['email'];
 $password = $_POST['pass'];
 
-$regService = new RegistrationService();
-$regUserResult = $regService->registerUser($username, $password, $email);
+$userService = new UserService();
+$regUserResult = $userService->registerUser($username, $password, $email);
 	
 if (!$regUserResult["result"]) {
 	die($regUserResult["error"]);
