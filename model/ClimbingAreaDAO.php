@@ -1,9 +1,10 @@
 <?php
 
-require_once('DBConnectionManager.php');
+include "../core/bootstrap.php";
 class ClimbingAreaDAO {
 
 	protected $db;
+	const CLIMBINGAREA_TABLENAME = "gyms";
 	
 	public function __construct() {
 		$DBManager = new DBConnectionManager();
@@ -40,15 +41,19 @@ class ClimbingAreaDAO {
 		}*/
 	}
 	
-	public function climbingAreaExists($areaid, $indoor) {
+	public function climbingAreaExists($areaID, $indoor) {
 		//convenience function to check if a climbing area exists
 		//Inputs: $areaid = proposed climbing area id
 		//		  $indoor = 0 (outdoor), 1 (indoor)
 		//Output: true (if exists), false (does not exist)
 		
 		$stmt = $this->db->prepare("SELECT * FROM gyms WHERE gymid=:gymid AND indoor=:indoor LIMIT 1");
-		$stmt->execute(array(':gymid'=>$areaid,':indoor'=>$indoor));
+		$stmt->execute(array(':gymid'=>$areaID,':indoor'=>$indoor));
 		return $stmt->fetch(PDO::FETCH_NUM) ? true : false;
+	}
+	
+	public function getClimbingAreaProperty($selectKeyValue) {
+		return DBHelper::performSimpleSelectQuery($this->db, self::CLIMBINGAREA_TABLENAME, $selectKeyValue);
 	}
 	
 	

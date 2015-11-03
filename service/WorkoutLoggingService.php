@@ -6,10 +6,85 @@ class WorkoutLoggingService {
 	
 	protected $workoutDAO;
 	protected $userrecordDAO;
+
 	
 	public function __construct() {
 		$this->workoutDAO = new WorkoutDAO();
 		$this->userrecordDAO = new UserRecordsDAO();
+	
+	}
+	
+	public function getWorkoutSegmentsRelFromPost($workoutInputPost, 
+			$boulderGradingSystemID, $routeGradingSystemID) {
+		/*
+		 * Convert POST variable from workout input to an array of workout segments
+		 * Input:
+		 * $workoutInputPost should be an array containing keys of the following pattern:
+		 * num{Project,Redpoint,Flash,Onsight}{B,TR,L}{relGradeIndex}
+		 * $boulderGradingSystemID = ID of boulder grading system
+		 * $routeGradingSystemID = ID fo route grading system
+		 * 
+		 * Output:
+		 * $workoutSegmentsRel = array(array(climb_type, ascent_type, grade_index, reps))
+		 */
+		
+		$workoutSegmentsRel = array();
+		
+		$maxBoulderGradeInd = GradingConversionService::getMaxBoulderGradeInd($boulderGradingSystemID);
+		$maxRouteGradeInd = GradingConversionService::getMaxRouteGradeInd($routeGradingSystemID);
+		
+		$ascentTypes = array(
+			0 => "Project",
+			1 => "Redpoint",
+			2 => "Flash",
+			3 => "Onsight");
+		$numAscentTypes = count($ascentTypes);
+		
+		for ($j = 0; $j < $numAscentTypes; $j++) {
+			//record any boulder climbs
+			for ($i = 0; $i <= $maxBoulderGradeInd; $i++) {
+				$climbType = 'boulder';
+				//construct varname of hidden field containing all the bouldering fields
+				$varname = 'num'.$ascentTypes[$j].'B'.$i;
+				$reps = $_POST[$varname];
+				if ($reps > 0) {
+					$workoutSegmentsRel[] = array("climb_type"=>$climbType,
+							"ascent_type"=>$ascentTypes[$j],
+							"grade_index"=>$i,
+							"reps"=>$reps
+					);
+				}
+			}
+	
+			for ($k=0;$k<=$maxRouteGradeInd;$k++) {
+				$TRvarname = 'num'.$ascentTypes[$j].'TR'.$k;
+				$Lvarname = 'num'.$ascentTypes[$j].'L'.$k;
+					
+				$reps = $_POST[$TRvarname];
+				if ($reps > 0) {
+					$climbType = 'toprope';
+					
+					$workoutSegmentsRel[] = array("climb_type"=>$climbType,
+							"ascent_type"=>$ascentTypes[$j],
+							"grade_index"=>$k,
+							"reps"=>$reps
+					);
+				}
+					
+				$reps = $_POST[$Lvarname];
+				if ($reps > 0) {
+					$climbType = 'lead';
+		
+					$workoutSegmentsRel[] = array("climb_type"=>$climbType,
+							"ascent_type"=>$ascentTypes[$j],
+							"grade_index"=>$k,
+							"reps"=>$reps
+					);
+				}
+			}
+		}
+		
+		return $workoutSegmentsRel;
 	}
 	
 	public function updateWorkoutAbsGrades($workoutID, $workout_info, $workout_segments_rel, $grading_systems) {
@@ -22,7 +97,7 @@ class WorkoutLoggingService {
 		/*
 		 * Input: 
 		 * $workout_info is an assc. array of non-climb data for the workout:
-		 * array(userid, date_workout, gymid, default_gym, boulder_notes, tr_notes, lead_notes, other_notes)
+		 * array(userid, date_workout, gymid, boulder_notes, tr_notes, lead_notes, other_notes)
 		 * $workout_segments_rel is an assc. array of all workout segments making up
 		 * a workout, using relative grade indices: 
 		 * array(array(climb_type, ascent_type, grade_index, reps))
@@ -31,10 +106,8 @@ class WorkoutLoggingService {
 		 */
 		
 		//Convert to $workout_segments_rel
-		var_dump($workout_segments_rel);
-		$workout_segments_rel = $this->convertRelToAbsGrades($workout_segments_rel, $grading_systems);
-		var_dump($workout_segments_rel);
-		return $this->saveWorkoutAbsGrades($workout_info, $workout_segments_rel);
+		$workout_segments_abs = $this->convertRelToAbsGrades($workout_segments_rel, $grading_systems);
+		return $this->saveWorkoutAbsGrades($workout_info, $workout_segments_abs);
 	}
 	
 	public function saveWorkoutAbsGrades($workout_info, $workout_segments_abs) {
@@ -44,7 +117,7 @@ class WorkoutLoggingService {
 		 * array(userid, date_workout, gymid, boulder_notes, tr_notes, lead_notes, other_notes)
 		 * $workout_segments_abs is an assc. array of all workout segments making up
 		 * a workout, using absolute grade indices:
-		 * array(array(climbType, ascentType, relGradeIndex, reps))
+		 * array(array(climb_type, ascent_type, grade_index, reps))
 		 * 
 		 * Output:
 		 * ["result", "workoutid", "boulderPoints", "trPoints", "leadPoints"]
@@ -71,7 +144,10 @@ class WorkoutLoggingService {
 		// Update user records
 		$this->updateRecords($userid, $workout_segments_abs);
 		
-		return $workoutID;
+		return array("result"=>true,"workoutID"=>$workoutID,
+				"boulderPoints"=>$pointResults["boulder_points"],
+				"trPoints"=>$pointResults["tr_points"],
+				"leadPoints"=>$pointResults["lead_points"]);
 	}
 	
 	public function updateRecords($userid, $workout_segments_abs) {
@@ -81,8 +157,6 @@ class WorkoutLoggingService {
 		 * and ascentType = ["Project", "Redpoint", "Flash", "Onsight"]
 		 */ 
 		$climbTypeMap = ["boulder"=>"Boulder", "toprope"=>"TR", "lead"=>"Lead"];
-		$ascentTypeMap = ["project"=>"Project", "redpoint"=>"Redpoint", "flash"=>"Flash", 
-				"onsight"=>"Onsight"];
 		
 		$userRecords = $this->userrecordDAO->getUserRecords($userid)[0];
 		
@@ -93,7 +167,7 @@ class WorkoutLoggingService {
 		foreach ($workout_segments_abs as $workout_segment) {
 			// Map climbType, ascentType to the correct key value
 			$climbTypeKey = $climbTypeMap[$workout_segment["climb_type"]];
-			$ascentTypeKey = $ascentTypeMap[$workout_segment["ascent_type"]];
+			$ascentTypeKey = ucfirst($workout_segment["ascent_type"]);
 			$userRecordKey = "highest".$climbTypeKey.$ascentTypeKey;
 			
 			$currWorkoutGrade = $workout_segment["grade_index"];
@@ -195,7 +269,7 @@ class WorkoutLoggingService {
 						"flash" => 2,
 						"onsight" => 3
 				);
-				$ascentInd = $ascentTypeMapping[$ascentType];
+				$ascentInd = $ascentTypeMapping[strtolower($ascentType)];
 	
 				if ($climbType == 'boulder') {
 					$points += $climbFactor[0]*($absGradeIndex+0.5)*100.0*$ascent_factor[$ascentInd]*$reps;

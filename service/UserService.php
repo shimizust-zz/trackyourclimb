@@ -6,8 +6,12 @@ include (realpath(dirname(__FILE__).'/../mailchimp_subscribe.php'));
 
 class UserService {
 	
+	protected $userPrefsDAO;
+	protected $userDataDAO;
+	
 	public function __construct() {
-
+		$this->userPrefsDAO = new UserPrefsDAO();
+		$this->userDataDAO = new UserDataDAO();
 	}
 	
 	public function registerUser($username,$password,$email) {
@@ -57,6 +61,47 @@ class UserService {
 		} else {
 			return ["result" => false, "error" => "Database error: Could not successfully create user"];
 		}
+	}
+	
+	public function getUserPrefs($userid) {
+		return $this->userPrefsDAO->getUserPrefs($userid);
+	}
+	
+	public function getUserCountryCode($userid) {
+		return $this->userDataDAO->getUserData($userid)[0]["countryCode"];
+	}
+	
+	public function setUserCountryCode($userid, $countryCode) {
+		$propValArray["countryCode"] = $countryCode;
+		$this->userDataDAO->updateUserData($userid, $propValArray);
+	}
+	
+	public function getUserMainClimbingAreas($userid) {
+		$userDataResult = $this->userDataDAO->getUserData($userid)[0];
+		$mainClimbingAreas["main_gym"] = $userDataResult["main_gym"];
+		$mainClimbingAreas["main_crag"] = $userDataResult["main_crag"];
+		return $mainClimbingAreas;
+	}
+	
+	public function setUserMainGym($userid, $mainGym) {
+		$propValArray["main_gym"] = $mainGym;
+		$this->userDataDAO->updateUserData($userid, $propValArray);
+	}
+	
+	public function setUserMainCrag($userid, $mainCrag) {
+		$propValArray["main_crag"] = $mainCrag;
+		$this->userDataDAO->updateUserData($userid, $propValArray);
+	}
+	
+	public function getUserGradingSystems($userid) {
+		/*
+		 * Return the grading system IDs as an associative array
+		 * ["boulder"=>boulder_id,"route"=>route_id]
+		 */
+		$gradingIDResult = $this->userPrefsDAO->getUserPrefs($userid);
+		$gradingSystems["boulder"] = $gradingIDResult["boulderGradingSystemID"];
+		$gradingSystems["route"] = $gradingIDResult["routeGradingSystemID"];
+		return $gradingSystems;
 	}
 	
 }

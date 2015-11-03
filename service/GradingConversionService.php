@@ -72,7 +72,13 @@ class GradingConversionService {
 		}
 	}
 
-
+	public static function getMaxBoulderGradeInd($boulderGradingSystemID) {
+		return count(self::$BOULDER_RATINGS[$boulderGradingSystemID])-1;
+	}
+	
+	public static function getMaxRouteGradeInd($routeGradingSystemID) {
+		return count(self::$ROUTE_RATINGS[$routeGradingSystemID])-1;
+	}
 
 
 

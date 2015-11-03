@@ -1,16 +1,16 @@
 <?php
+include "./core/bootstrap.php";
+
 //connect to database
 include 'dbconnect.php';
 
 //check that user has a valid cookie, redirect if no valid cookie
 include 'php_common/cookiecheck.php';				
-			
+
 			
 //extract their user preferences
-$stmt = $db->prepare("SELECT * FROM userprefs WHERE userid 
-	= :userid");
-$stmt->execute(array(':userid'=>$userid));
-$userprefs = $stmt->fetch(PDO::FETCH_ASSOC);
+$userService = new UserService();
+$userprefs = $userService->getUserPrefs($userid);
 
 $show_boulder = $userprefs['show_boulder'];
 $show_TR = $userprefs['show_TR'];
@@ -31,27 +31,13 @@ $maxL = $userprefs['maxL'];
 $boulderGradingID = $userprefs['boulderGradingSystemID'];
 $routeGradingID = $userprefs['routeGradingSystemID'];
 
-//build up gym option table
-$stmt2 = $db->prepare("SELECT gymid, gym_name, city, state FROM gyms
-	ORDER BY state");
-
 //Find out user's country
-//update userdata with user's country
-$stmt2 = $db->prepare("SELECT countryCode FROM userdata WHERE
-userid = :userid");
-$stmt2->execute(array(':userid'=>$userid));
-$countryResult = $stmt2->fetch(PDO::FETCH_ASSOC);
-$countryCode = $countryResult['countryCode'];
+$countryCode = $userService->getUserCountryCode($userid);
 	
 //find user's main gym
-$stmt3 = $db->prepare("SELECT main_gym,main_crag FROM userdata WHERE userid = :userid");
-$stmt3->execute(array(':userid'=>$userid));
-$main_climbingarea = $stmt3->fetch(PDO::FETCH_ASSOC);
-$main_gymid = $main_climbingarea['main_gym'];
-$main_cragid = $main_climbingarea['main_crag'];
-
-//$gymOptions = '<option value="">Select a Gym...</option>';
-//include 'genGymOptions.php';
+$mainClimbingAreas = $userService->getUserMainClimbingAreas($userid);
+$main_gymid = $mainClimbingAreas['main_gym'];
+$main_cragid = $mainClimbingAreas['main_crag'];
 
 ?>
 <!DOCTYPE HTML>

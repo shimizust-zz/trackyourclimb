@@ -229,94 +229,11 @@ class UserDAO {
 		}
 	}
 	
-	public function addUser2($username,$password,$email) {
-		//return ["result" => true] if successful
-		//return ["result" => false, "error" => {error message}] if not
-		//$password is plaintext for input
-		
-		//**Perform check that username/email is not already taken
-		// and password is valid (not empty)
-		
-		$stmt = $db->prepare('SELECT username FROM users WHERE username=?');
-		$stmt->execute(array($username));
-		$usercheck_query = $stmt->rowCount();
-		if ($usercheck_query>0) {
-			return ["result" => false, "error" => "Username is already in use"];
-		}
-		$stmt = $db->prepare('SELECT email FROM users WHERE email = ?');
-		$stmt->execute(array($emailcheck));
-		$emailcheck_query = $stmt->rowCount();
-		if ($emailcheck_query > 0) {
-			return ["result" => false, "error" => "Email is already in use"];
-		}
-		
-		if (empty($password)) {
-			return ["result" => false, "error" => "Password should be non-empty"];
-		}
-		$password_encrypted = password_hash($password,PASSWORD_DEFAULT);
-		
-		//Create main user entry
-		$stmt = $db->prepare('INSERT INTO users (username,pass_hash,email) VALUES
-		(:username,:pass,:email)');
-		$stmt->execute(array(':username'=>$username,
-				':pass'=>$password_encrypted,':email'=>$email));
-		$id = $db->lastInsertId();
-		
-		//Create entry in userdata table
-		$stmt2 = $db->prepare('INSERT INTO userdata (userid) VALUES (?)');
-		$stmt2->execute(array($id));
-		
-		//Create entry in userprefs table (user profile data)
-		$stmt3 = $db->prepare('INSERT INTO userprefs (userid) VALUES (?)');
-		$stmt3->execute(array($id));
-		
-		//Create entry in userrecords table
-		$stmt4 = $db->prepare('INSERT INTO userrecords (userid,highestBoulderProject,
-		highestBoulderRedpoint,highestBoulderFlash,highestBoulderOnsight,
-		highestTRProject,highestTRRedpoint,highestTRFlash,highestTROnsight,
-		highestLeadProject,highestLeadRedpoint,highestLeadFlash,
-		highestLeadOnsight) VALUES (:userid,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1)');
-		$stmt4->execute(array(':userid'=>$id));
-		
-		//add email to MailChimp list
-		$MailChimp = initialize_mailchimp();
-		mailchimp_subscribe($_POST['email'],$MailChimp);
-		
-		//check if user added successfully
-		$add_member = $stmt->rowCount()>0 && $stmt2->rowCount()>0 &&
-		$stmt3->rowCount()>0 && $stmt4->rowCount()>0;
-		
-		if ($add_member) {
-			return ["result" => true];
-		} else {
-			return ["result" => false, "error" => "Database error: Could not successfully create user"];
-		}
-	}
 	
 	public function resetPassword($userid,$password) {
 		//TODO
 	}
 	
-	protected static function genPrepareString($propValArray) {
-		//The property name has already been verified, so no need to use 
-		//placeholders for these, just the property values
-		
-		//Input: an array like: array("column1","column2",...)
-		//Returns a string like: "column1=:column1,column2=:column2,..."
-		$prepString = "";
-		foreach ($propValArray as $key => $val) {
-			$prepString .= $key."=".":".$key.",";
-		}
-		return rtrim($prepString, ","); //remove trailing comma
-	}
-	
-	protected static function genExecuteArray($propValArray) {
-		$executeArray = array();
-		foreach ($propValArray as $key => $val) {
-			$executeArray[':'.$key] = $val;
-		}
-		return $executeArray;
-	}
 	
 }
 
