@@ -49,7 +49,7 @@ class WorkoutLoggingService {
 				$reps = $_POST[$varname];
 				if ($reps > 0) {
 					$workoutSegmentsRel[] = array("climb_type"=>$climbType,
-							"ascent_type"=>$ascentTypes[$j],
+							"ascent_type"=>strtolower($ascentTypes[$j]),
 							"grade_index"=>$i,
 							"reps"=>$reps
 					);
@@ -65,7 +65,7 @@ class WorkoutLoggingService {
 					$climbType = 'toprope';
 					
 					$workoutSegmentsRel[] = array("climb_type"=>$climbType,
-							"ascent_type"=>$ascentTypes[$j],
+							"ascent_type"=>strtolower($ascentTypes[$j]),
 							"grade_index"=>$k,
 							"reps"=>$reps
 					);
@@ -76,7 +76,7 @@ class WorkoutLoggingService {
 					$climbType = 'lead';
 		
 					$workoutSegmentsRel[] = array("climb_type"=>$climbType,
-							"ascent_type"=>$ascentTypes[$j],
+							"ascent_type"=>strtolower($ascentTypes[$j]),
 							"grade_index"=>$k,
 							"reps"=>$reps
 					);

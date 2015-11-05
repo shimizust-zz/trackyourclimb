@@ -82,7 +82,7 @@ $main_cragid = $mainClimbingAreas['main_crag'];
 			var currPointTotal = 0; //initialize current point total
 		</script>
 		<script src="js/BoulderRouteGradingSystems.js"></script>
-		<script src="js/calcPoints.js"></script>
+<!-- 		<script src="js/calcPoints.js"></script> -->
 		<script src="js/BoulderRouteGradingSystems.js"></script>
 		<script src="js/workoutinput-script.js"></script>
 		<script src="js/inputTableShared.js"></script>

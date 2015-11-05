@@ -1,6 +1,7 @@
 <?php
 include "./core/bootstrap.php";
 
+include 'dbconnect.php';
 //check that user has a valid cookie, redirect if no valid cookie
 include 'php_common/cookiecheck.php';	
 
@@ -38,9 +39,6 @@ if (isset($_POST['workoutsubmit'])) {
 	$TRNotes = $_POST['TRNotes'];
 	$LeadNotes = $_POST['LeadNotes'];
 	$OtherNotes = $_POST['OtherNotes'];
-	
-// 	$workout_info is an assc. array of non-climb data for the workout:
-// 	* array(userid, date_workout, gymid, boulder_notes, tr_notes, lead_notes, other_notes)
 	
 	$workoutInfo = array(
 		"userid"=>$userid,
