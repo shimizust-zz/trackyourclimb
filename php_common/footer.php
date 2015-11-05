@@ -10,7 +10,6 @@
 		data-href="https://www.facebook.com/trackyourclimb"
 		data-layout="button_count" data-action="like" data-show-faces="false"
 		data-share="true"></div>
-s
 </div>
 
 
