@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="TrackYourClimb : A simple climbing tracker">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>TrackYourClimb</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/shimizust/trackyourclimb">View on GitHub</a>
+
+          <h1 id="project_title">TrackYourClimb</h1>
+          <h2 id="project_tagline">A simple climbing tracker</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/shimizust/trackyourclimb/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/shimizust/trackyourclimb/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="trackyourclimb-" class="anchor" href="#trackyourclimb-" aria-hidden="true"><span class="octicon octicon-link"></span></a>TrackYourClimb <a href="https://travis-ci.org/shimizust/trackyourclimb"><img src="https://travis-ci.org/shimizust/trackyourclimb.svg" alt="Build Status"></a>
+</h1>
+
+<h2>
+<a id="quick-summary" class="anchor" href="#quick-summary" aria-hidden="true"><span class="octicon octicon-link"></span></a>Quick Summary</h2>
+
+<p>This repository contains the source code for <a href="http://www.trackyourclimb.com">www.trackyourclimb.com</a>, a web app that helps climbers keep track of their climbs and analyze their progress. This project is built with PHP, MySQL, Javascript, CSS, and HTML. </p>
+
+<p>We welcome community contributions, and we've tried to make it very easy to get started. </p>
+
+<h2>
+<a id="how-do-i-get-set-up" class="anchor" href="#how-do-i-get-set-up" aria-hidden="true"><span class="octicon octicon-link"></span></a>How do I get set up?</h2>
+
+<p>(Windows instructions)</p>
+
+<h4>
+<a id="set-up-server-and-repo" class="anchor" href="#set-up-server-and-repo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Set up Server and Repo</h4>
+
+<ol>
+<li>Download and install the latest version of XAMPP (<a href="https://www.apachefriends.org/download.html">https://www.apachefriends.org/download.html</a>), which is a free software package consisting of a web server, MySQL database, and PHP. The installation directory (e.g. C:\xampp) will be referred to as <code>${XAMPP}</code>)</li>
+<li>From the command prompt, navigate to <code>${XAMPP}\htdocs</code>
+</li>
+<li>Clone the repo. In the command prompt, enter:
+
+<ol>
+<li><code>git clone https://github.com/shimizust/trackyourclimb.git trackyourclimb</code></li>
+<li>Note: Replace "trackyourclimb" with any name you want for your root folder. The root of the local git repo will be referred to as <code>${REPO}</code>
+</li>
+</ol>
+</li>
+</ol>
+
+<h4>
+<a id="set-up-database" class="anchor" href="#set-up-database" aria-hidden="true"><span class="octicon octicon-link"></span></a>Set up database</h4>
+
+<ol>
+<li>Start the XAMPP control panel (<code>${XAMPP}\xampp-control.exe</code>)</li>
+<li>From the control panel, start Apache and MySQL</li>
+<li>Click "Admin" for MySQL or navigate to <code>localhost/phpmyadmin</code> in your browser</li>
+<li>Click "New" on the left</li>
+<li>Enter a name for the database (e.g. "trackyourclimb_db") and choose the collation to be <code>utf8_unicode_ci</code>. Click Create.</li>
+<li>Import the database schema by clicking "Import" from the top menu bar and choosing <code>${REPO}\database_init\trackyourclimb_db_schema.sql</code>.</li>
+</ol>
+
+<h4>
+<a id="set-up-the-property-files-and-directories" class="anchor" href="#set-up-the-property-files-and-directories" aria-hidden="true"><span class="octicon octicon-link"></span></a>Set up the property files and directories</h4>
+
+<ol>
+<li>From the local git repo, make a copy of <code>${REPO}\siteproperties-TEMPLATE.ini</code> and rename to <code>${REPO}\siteproperties.ini</code>
+</li>
+<li>In <code>siteproperties.ini</code>, fill in the following parameters:
+
+<ol>
+<li>
+<code>db_name = "trackyourclimb_db"</code> [or whatever you named the database]</li>
+<li>
+<code>db_username = "root"</code> [or another username to access the database, "root" is the default]</li>
+<li>
+<code>db_password = ""</code> [or whatever password you set, blank "" is the default]</li>
+<li>You can leave the Mailchimp details blank for now.</li>
+</ol>
+</li>
+<li>Create the following directory <code>${REPO}\userimages</code>. This is used to store user profile pictures.</li>
+</ol>
+
+<h4>
+<a id="install-php-packages" class="anchor" href="#install-php-packages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install PHP packages</h4>
+
+<ol>
+<li>Follow these instructions to install Composer, a PHP package manager (see Installation - Windows: Using the Installer): <a href="https://getcomposer.org/doc/00-intro.md">https://getcomposer.org/doc/00-intro.md</a>
+</li>
+<li>Navigate to <code>${REPO}</code> from the command prompt. Enter <code>composer install</code> to install PHP packages, which will reside in the <code>${REPO}\vendor</code> folder.</li>
+</ol>
+
+<h4>
+<a id="install-client-side-js-css-packages" class="anchor" href="#install-client-side-js-css-packages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install Client-Side (JS, CSS) packages</h4>
+
+<ol>
+<li>Download and install Node.js (<a href="https://nodejs.org/">https://nodejs.org/</a>)</li>
+<li>Use the Node Package Manager (npm), to install Bower (client-side package manager)
+
+<ol>
+<li>Open a command prompt anywhere, and enter: <code>npm install -g bower</code>
+</li>
+</ol>
+</li>
+<li>From the command prompt, navigate to <code>${REPO}</code> and run <code>bower install</code>, which will install dependencies in the <code>${REPO}\bower_components</code> folder.</li>
+</ol>
+
+<h4>
+<a id="test-it-out" class="anchor" href="#test-it-out" aria-hidden="true"><span class="octicon octicon-link"></span></a>Test it out</h4>
+
+<ol>
+<li>In your browser, navigate to <code>localhost/trackyourclimb</code> (use whatever you named the root folder). You should see the trackyourclimb website with no data.</li>
+<li>This is a local version of the website you can play around with and test out your changes, although it requires internet access for some libraries delivered from CDNs.</li>
+</ol>
+
+<h4>
+<a id="running-tests" class="anchor" href="#running-tests" aria-hidden="true"><span class="octicon octicon-link"></span></a>Running Tests</h4>
+
+<ol>
+<li>Install PHPUnit using these instructions: <a href="https://phpunit.de/getting-started.html">https://phpunit.de/getting-started.html</a>
+</li>
+<li>All tests are contained under /tests/ with the filename format: *Test.php</li>
+<li>From project root, run the command <code>phpunit tests</code> to determine if tests pass.</li>
+</ol>
+
+<h4>
+<a id="changing-css" class="anchor" href="#changing-css" aria-hidden="true"><span class="octicon octicon-link"></span></a>Changing CSS</h4>
+
+<p>The project uses SCSS, which adds better functionality to the existing CSS syntax. All of the site's custom CSS is written in <code>${REPO}\css\scss\mycss.scss</code>.</p>
+
+<h2>
+<a id="contribution-guidelines" class="anchor" href="#contribution-guidelines" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contribution guidelines</h2>
+
+<ol>
+<li>If you have a bug fix, feature, design change, etc., post an issue in the Github repository.</li>
+<li>If we decide that this change makes sense, someone will be assigned the fix.</li>
+<li>After forking the repository and implementing the change, issue a pull request. If approved, the change will be merged. Shortly thereafter, the website will be manually synced with the Github repo.</li>
+</ol>
+
+<p>Here are some areas of contribution:</p>
+
+<ul>
+<li>bug fixes</li>
+<li>refactoring code</li>
+<li>making the design better</li>
+<li>adding new features</li>
+<li>improving the build process</li>
+<li>writing tests</li>
+<li>documentation</li>
+</ul>
+
+<h2>
+<a id="who-do-i-talk-to" class="anchor" href="#who-do-i-talk-to" aria-hidden="true"><span class="octicon octicon-link"></span></a>Who do I talk to?</h2>
+
+<ul>
+<li>Repo owner: Steven Shimizu (<a href="mailto:shimizust@gmail.com">shimizust@gmail.com</a>)</li>
+</ul>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">TrackYourClimb maintained by <a href="https://github.com/shimizust">shimizust</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-52105504-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+
+  </body>
+</html>
