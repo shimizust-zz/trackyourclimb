@@ -1,8 +1,10 @@
 # TrackYourClimb [![Build Status](https://travis-ci.org/shimizust/trackyourclimb.svg)](https://travis-ci.org/shimizust/trackyourclimb)
 
-## Quick Summary ##
+## About ##
 
-This repository contains the source code for www.trackyourclimb.com, a web app that helps climbers keep track of their climbs and analyze their progress. This project is built with PHP, MySQL, Javascript, CSS, and HTML. 
+This open-source project was started to bring a simple climbing tracker to the community. It is not meant to replace apps that keep track of specific outdoor climbs--instead, it is more workout-focused and geared toward those who climb many times in a single session and want to monitor his or her progress over time. The web app currently supports tracking boulder, top-rope, lead climbs in both indoor gyms and outdoors, with options for specifying different ascent types (attempts, redpoint, flash, onsight). 
+
+This repository contains the source code for www.trackyourclimb.com, which is built with PHP, MySQL, Javascript, CSS, and HTML. 
 
 We welcome community contributions, and we've tried to make it very easy to get started. 
 
@@ -72,6 +74,20 @@ Here are some areas of contribution:
 - improving the build process
 - writing tests
 - documentation
+
+## Open Source Software Attribution ##
+
+- [PHP](http://php.net/)
+- [MySQL](http://www.mysql.com/)
+- [JQuery](http://jquery.com/)
+- [Bootstrap](http://getbootstrap.com/)
+- [Flot](http://www.flotcharts.org/)
+- [Bootstrap-Calendar](https://github.com/Serhioromano/bootstrap-calendar)
+- [PHPExcel](https://phpexcel.codeplex.com/)
+- The Noun Project
+     - [Event Icon](http://thenounproject.com/term/event/37208/)
+     - [Climbing Icon](http://thenounproject.com/term/climbing/78370/)
+     - [Stats Icon](http://thenounproject.com/term/graph/37874/)
 
 ## Who do I talk to? ##
 
