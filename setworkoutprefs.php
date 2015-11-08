@@ -1,18 +1,41 @@
 <?php 
-	
+include './core/bootstrap.php';
+
 //connect to database
 include 'dbconnect.php';
 
 //check that user has a valid cookie, redirect if no valid cookie
 include 'php_common/cookiecheck.php';	
 
-$savenote = "";	
-include 'submit-workoutprefs.php';	
+
+$userService = new UserService();
+
+if (isset($_POST['prefsubmit'])) {
+	$userPrefs = array();
+	
+	$userPrefs = [(int)isset($_POST['showBoulder']), (int)isset($_POST['showTR']), (int)isset($_POST['showLead']),
+			(int)isset($_POST['showProject']), (int)isset($_POST['showRedpoint']), (int)isset($_POST['showFlash']), (int)isset($_POST['showOnsight']),
+			$_POST['minBoulderRange'], $_POST['maxBoulderRange'],
+			$_POST['minTRRange'], $_POST['maxTRRange'],
+			$_POST['minLeadRange'], $_POST['maxLeadRange'],
+			$_POST['boulder-rating-select'], $_POST['route-rating-select']
+	];
+	$success = $userService->setUserPrefs($userid, $userPrefs);
+	
+	$countryCode = $_POST['country-select'];
+	$userService->setUserCountryCode($userid, $countryCode);
+	
+	//once preferences are set, go to the workout input page
+	if ($success) {
+		header('Location: workout-input.php');
+	} else {
+		throw new Exception("Workout preferences could not be saved.");
+	}
+}
+
 
 //Check current userprefs
-$stmt2 = $db->prepare("SELECT * FROM userprefs WHERE userid = :userid");
-$stmt2->execute(array(':userid'=>$userid));
-$prefs = $stmt2->fetch(PDO::FETCH_ASSOC);
+$prefs = $userService->getUserPrefs($userid);
 $boulderGradingID = $prefs['boulderGradingSystemID'];
 $routeGradingID = $prefs['routeGradingSystemID'];
 
@@ -32,12 +55,7 @@ $selectMinL = $prefs['minL'];
 $selectMaxL = $prefs['maxL'];		
 		
 //Find out user's country
-//update userdata with user's country
-$stmt2 = $db->prepare("SELECT countryCode FROM userdata WHERE
-userid = :userid");
-$stmt2->execute(array(':userid'=>$userid));
-$countryResult = $stmt2->fetch(PDO::FETCH_ASSOC);
-$countryCode = $countryResult['countryCode'];
+$countryCode = $userService->getUserCountryCode($userid);
 	
 ?>
 <!DOCTYPE HTML>

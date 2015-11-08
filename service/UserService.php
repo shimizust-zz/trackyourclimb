@@ -67,6 +67,20 @@ class UserService {
 		return $this->userPrefsDAO->getUserPrefs($userid);
 	}
 	
+	public function setUserPrefs($userid, $userPrefs) {
+		/*
+		 * Set user preferences
+		 * Input: $userPrefs is an non-associative array with values in order,
+		 * correpsonding to the following keys:
+		 * "show_boulder","show_TR","show_Lead","show_project",
+		 * "show_redpoint","show_flash","show_onsight","minV","maxV",
+		 * "minTR","maxTR","minL","maxL","boulderGradingSystemID",
+		 * "routeGradingSystemID"
+		 */
+		
+		return $this->userPrefsDAO->setUserPrefs($userid, $userPrefs);
+	}
+	
 	public function getUserCountryCode($userid) {
 		return $this->userDataDAO->getUserData($userid)[0]["countryCode"];
 	}

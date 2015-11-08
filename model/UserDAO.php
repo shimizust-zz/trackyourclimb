@@ -116,59 +116,6 @@ class UserDAO {
 		return $result;
 	}
 	
-	public function setUserPrefs($userid, $changedprefs) {
-		//$changedprefs is an associative array of preferences to change
-		$validprefs = array("show_boulder","show_TR","show_Lead","show_project",
-				"show_redpoint","show_flash","show_onsight","minV","maxV",
-				"minTR","maxTR","minL","maxL","boulderGradingSystemID",
-				"routeGradingSystemID");
-		$minValid = array("show_boulder"=>0,"show_TR"=>0,"show_Lead"=>0,
-				"show_project"=>0,"show_redpoint"=>0,"show_flash"=>0,
-				"show_onsight"=>0,"minV"=>0,"maxV"=>0,"minTR"=>0,"maxTR"=>0,
-				"minL"=>0,"maxL"=>0,"boulderGradingSystemID"=>0,
-				"routeGradingSystemID"=>0);
-		$maxValid = array("show_boulder"=>1,"show_TR"=>1,"show_Lead"=>1,
-				"show_project"=>1,"show_redpoint"=>1,"show_flash"=>1,
-				"show_onsight"=>1,"minV"=>15,"maxV"=>15,"minTR"=>24,"maxTR"=>24,
-				"minL"=>24,"maxL"=>24,"boulderGradingSystemID"=>2,
-				"routeGradingSystemID"=>9);
-		
-		$prefsarevalid = true;
-		$stmtStr = "UPDATE userprefs SET ";
-		foreach ($changedprefs as $prefname => $prefvalue) {
-			//first check that it's a valid property
-			if (in_array($prefname, $validprefs)) {
-				//check if not numeric or not within valid range
-				if (!(is_numeric($prefvalue) && 
-					$prefvalue >= $minValid[$prefname] && 
-					$prefvalue <= $maxValid[$prefname])) {
-					$prefsarevalid = false;	
-					break; //break out of foreach loop if not valid
-				}
-			} else {
-				$prefsarevalid = false;
-				break;
-			}
-		}
-		
-		if ($prefsarevalid) {
-			//prefs are valid, so write to database
-			$stmtString = "UPDATE userprefs SET ".
-				DBHelper::genPrepareString($changedprefs).
-				" WHERE userid=:userid";
-			echo $stmtString;
-			$stmt = $this->db->prepare($stmtString);
-			
-			$executeArray = DBHelper::genExecuteArray($changedprefs);
-			$executeArray[':userid'] = $userid;
-			
-			return $stmt->execute($executeArray);
-			
-		} else {
-			return false;
-		}
-	}
-	
 	public function setUserProfile($userid, $changedprofile) {
 		
 		/*

@@ -1,12 +1,37 @@
 <?php 
-	
+include './core/bootstrap.php';
+
 //connect to database
 include 'dbconnect.php';
 
 //check that user has a valid cookie, redirect if no valid cookie
 include 'php_common/cookiecheck.php';	
 
-include 'submit-workoutprefs.php';	 	
+
+$userService = new UserService();
+
+if (isset($_POST['prefsubmit'])) {
+	$userPrefs = array();
+
+	$userPrefs = [(int)isset($_POST['showBoulder']), (int)isset($_POST['showTR']), (int)isset($_POST['showLead']),
+			(int)isset($_POST['showProject']), (int)isset($_POST['showRedpoint']), (int)isset($_POST['showFlash']), (int)isset($_POST['showOnsight']),
+			$_POST['minBoulderRange'], $_POST['maxBoulderRange'],
+			$_POST['minTRRange'], $_POST['maxTRRange'],
+			$_POST['minLeadRange'], $_POST['maxLeadRange'],
+			$_POST['boulder-rating-select'], $_POST['route-rating-select']
+	];
+	$success = $userService->setUserPrefs($userid, $userPrefs);
+
+	$countryCode = $_POST['country-select'];
+	$userService->setUserCountryCode($userid, $countryCode);
+
+	//once preferences are set, go to the workout input page
+	if ($success) {
+		header('Location: workout-input.php');
+	} else {
+		throw new Exception("Workout preferences could not be saved.");
+	}
+}
 			
 ?>
 <!DOCTYPE HTML>
