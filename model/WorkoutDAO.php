@@ -14,7 +14,17 @@ class WorkoutDAO {
 	}
 	
 	public function getWorkoutInfo($workout_id) {
+		/*
+		 * Input: $workout_id = workout ID
+		 * 
+		 * Output: An associative array of workout information,
+		 * $workoutInfo = array("userid","date_workout","gymid","boulder_points",
+		 * "TR_points","Lead_points","boulder_notes","tr_notes","lead_notes",
+		 * "other_notes"
+		 */
 		
+		$selectKeyValue = array("workout_id", $workout_id);
+		return DBHelper::performSimpleSelectQuery($this->db, "workouts", $selectKeyValue)[0];
 	}
 	
 	public function saveWorkoutInfo($workout_info) {
@@ -51,4 +61,18 @@ class WorkoutDAO {
 		
 	}
 	
+	public function getWorkoutSegments($workout_id) {
+		/*
+		 * Input: $workout_id
+		 * 
+		 * Output: An array of an associative array of workout segment info
+		 */
+		$selectKeyValue = ["workout_id", $workout_id];
+		return DBHelper::performSimpleSelectQuery($this->db, "workout_segments", $selectKeyValue);
+	}
+	
+	public function deleteWorkout($workout_id) {
+		$selectKeyValue = ["workout_id", $workout_id];
+		return DBHelper::performSimpleDeleteQuery($this->db, "workouts", $selectKeyValue);
+	}
 }

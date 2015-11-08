@@ -6,12 +6,74 @@ class WorkoutLoggingService {
 	
 	protected $workoutDAO;
 	protected $userrecordDAO;
-
+	protected $userService;
+	protected $climbingAreaService;
 	
 	public function __construct() {
 		$this->workoutDAO = new WorkoutDAO();
 		$this->userrecordDAO = new UserRecordsDAO();
+		$this->userService = new UserService();
+		$this->climbingAreaService = new ClimbingAreaService();
+	}
 	
+	public function saveWorkout($workoutInputPost, $userid) {
+		/*
+		 * Save workout using POST variable from workout input
+		 * Input:
+		 * $workoutInputPost should be an array containing keys of the following pattern:
+		 * num{Project,Redpoint,Flash,Onsight}{B,TR,L}{relGradeIndex}
+		 * $boulderGradingSystemID = ID of boulder grading system
+		 * $routeGradingSystemID = ID fo route grading system
+		 * 
+		 * $userid
+		 * 
+		 * Output:
+		 * ["result", "workoutID", "boulderPoints", "trPoints", "leadPoints"]
+		 */
+
+		$workoutdate = $workoutInputPost['workoutdate'];
+		$gymid = $workoutInputPost['gymid'];
+		
+		if (isset($workoutInputPost['default-gym'])) {
+			//check if indoor gym or outdoor crag
+			//update default climbing area accordingly
+			if (isset($workoutInputPost['gym-indoor'])) {
+				$workoutInputPost["gym-indoor"] ? $this->userService->setUserMainGym($userid, $gymid)
+				: $this->userService->setUserMainCrag($userid, $gymid);
+			}
+		
+			//set default country to that of the chosen climbing area
+			$countryCode = $this->climbingAreaService->getCountryCode($gymid);
+			$this->userService->setUserCountryCode($userid, $countryCode);
+		}
+		
+		// Extract user's current preferred grading system
+		$gradingSystems = $this->userService->getUserGradingSystems($userid);
+		$boulderGradingSystemID = $gradingSystems["boulder"];
+		$routeGradingSystemID = $gradingSystems["route"];
+		
+		// Extract notes on each climbing type
+		$boulderNotes = $workoutInputPost['boulderNotes'];
+		$TRNotes = $workoutInputPost['TRNotes'];
+		$LeadNotes = $workoutInputPost['LeadNotes'];
+		$OtherNotes = $workoutInputPost['OtherNotes'];
+		
+		$workoutInfo = array(
+				"userid"=>$userid,
+				"date_workout"=>$workoutdate,
+				"gymid"=>$gymid,
+				"boulder_notes"=>$boulderNotes,
+				"tr_notes"=>$TRNotes,
+				"lead_notes"=>$LeadNotes,
+				"other_notes"=>$OtherNotes
+		);
+		
+		$workoutSegmentsRel = $this->getWorkoutSegmentsRelFromPost($workoutInputPost, $boulderGradingSystemID, $routeGradingSystemID);
+		$gradingSystems = ["boulder"=>$boulderGradingSystemID, "route"=>$routeGradingSystemID];
+		$workoutResult = $this->saveWorkoutRelGrades($workoutInfo, $workoutSegmentsRel, $gradingSystems);
+		$workoutResult["workoutDate"] = $workoutInputPost["workoutdate"];
+		
+		return $workoutResult;
 	}
 	
 	public function getWorkoutSegmentsRelFromPost($workoutInputPost, 
@@ -120,7 +182,7 @@ class WorkoutLoggingService {
 		 * array(array(climb_type, ascent_type, grade_index, reps))
 		 * 
 		 * Output:
-		 * ["result", "workoutid", "boulderPoints", "trPoints", "leadPoints"]
+		 * ["result", "workoutID", "boulderPoints", "trPoints", "leadPoints"]
 		 */
 		
 		$userid = $workout_info['userid'];
@@ -251,6 +313,24 @@ class WorkoutLoggingService {
 		}
 		
 		return $pointTotals;
+	}
+	
+	public function getWorkoutInfo($workoutID) {
+		/*
+		 * Returns an associative array with the following keys:
+		 * $workoutInfo = array("userid","date_workout","gymid","boulder_points",
+		 * "TR_points","Lead_points","boulder_notes","tr_notes","lead_notes",
+		 * "other_notes")
+		 */
+		return $this->workoutDAO->getWorkoutInfo($workoutID);
+	}
+	
+	public function getWorkoutSegments($workoutID) {
+		return $this->workoutDAO->getWorkoutSegments($workoutID);
+	}
+	
+	public function deleteWorkout($workoutID) {
+		return $this->workoutDAO->deleteWorkout($workoutID);
 	}
 	
 	private static function calcPointsWorkoutSegment($climbType,

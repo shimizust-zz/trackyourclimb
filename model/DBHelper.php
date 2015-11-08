@@ -101,7 +101,7 @@ class DBHelper {
 		/*
 		 * Input:
 		 * $db = a database connection
-		 * $table = the name of the table to update row 
+		 * $table = the name of the table to select from
 		 * $selectKeyValue = [0=>key, 1=>value]
 		 */
 		$selectKey = $selectKeyValue[0];
@@ -111,6 +111,20 @@ class DBHelper {
 		$stmt->execute(array(":".$selectKey=>$selectValue));
 		$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		return $result;
+	}
+	
+	public static function performSimpleDeleteQuery($db, $table, $selectKeyValue) {
+		/*
+		 * Input:
+		 * $db = a database connection
+		 * $table = the name of the table to delete from
+		 * $selectKeyValue = [0=>key, 1=>value]
+		 */
+		$selectKey = $selectKeyValue[0];
+		$selectValue = $selectKeyValue[1];
+		$stmt = $db->prepare("DELETE FROM ".$table." WHERE ".
+				$selectKey."=:".$selectKey);
+		$stmt->execute(array(":".$selectKey=>$selectValue));
 	}
 }
 

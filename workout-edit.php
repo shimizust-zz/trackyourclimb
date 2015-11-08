@@ -1,24 +1,29 @@
 <?php
+include './core/bootstrap.php';
+
 //connect to database
 include 'dbconnect.php';
 
 //check that user has a valid cookie, redirect if no valid cookie
 include 'php_common/cookiecheck.php';				
 			
+$workoutLoggingService = new WorkoutLoggingService();
+$userService = new UserService();
+$climbingAreaService = new ClimbingAreaService();
+
 $workout_id_prev = $_GET['wid'];
 $showChangesSaved = 0; 
 
 //check if edits have been submitted
 if (isset($_POST['workoutsubmit'])) {
-	//save workout as a new workout (even though it was edited)
-	include 'saveworkout.php';
+	// save workout as a new workout (even though it was edited)
+	$workoutResult = $workoutLoggingService->saveWorkout($_POST, $userid);
 	
-	//delete the previous workout
-	$stmt5 = $db->prepare("DELETE FROM workouts WHERE workout_id = :workoutid");
-	$stmt5->execute(array(':workoutid'=>$workout_id_prev));
+	// delete the previous workout
+	$workoutLoggingService->deleteWorkout($workout_id_prev);
 	
-	//Now, change the previous workout id to the new workout id (from 'saveworkout.php')
-	$workout_id_prev = $workoutid;
+	// reset previous workout id
+	$workout_id_prev = $workoutResult["workoutID"];
 	
 	//display a message that changes have been saved.
 	$showChangesSaved = 1;
@@ -27,26 +32,17 @@ if (isset($_POST['workoutsubmit'])) {
 	include 'update-records-absolute.php';
 }
 
+$workoutInfo = $workoutLoggingService->getWorkoutInfo($workout_id_prev);
+$userid_wid = $workoutInfo["userid"];
 
-//Check if the userid corresponding to $workout_id_prev matches
-$stmt = $db->prepare("SELECT userid FROM workouts WHERE workout_id=:workoutid");
-$stmt->execute(array(':workoutid'=>$workout_id_prev));
-$userid_wid = $stmt->fetch();
-$userid_wid = $userid_wid['userid'];
-
+// Check that user of the workout_id_prev matches that of the cookie userid
 if ($userid != $userid_wid) {
-	//user of the workout_id_prev does not match the userid of the cookies
+	
 	header('Location: past-workouts.php');
 }
-//if it matches, continue rendering the edit workout page
 
-
-			
-//extract their user preferences
-$stmt = $db->prepare("SELECT * FROM userprefs WHERE userid 
-	= '$userid'");
-$stmt->execute();
-$userprefs = $stmt->fetch(PDO::FETCH_ASSOC);
+// Extract user preferences
+$userprefs = $userService->getUserPrefs($userid);
 
 $show_boulder = $userprefs['show_boulder'];
 $show_TR = $userprefs['show_TR'];
@@ -67,27 +63,10 @@ $maxL = $userprefs['maxL'];
 //extract grading system used for this workout (use userprefs)
 $boulderGradingID = $userprefs['boulderGradingSystemID'];
 $routeGradingID = $userprefs['routeGradingSystemID'];
+$main_gymid = $workoutInfo["gymid"];
+$countryCode = $climbingAreaService->getClimbingAreaProperties($main_gymid)["countryCode"];
 
-//build up gym option table
-$stmt2 = $db->prepare("SELECT gymid, gym_name, city, state FROM gyms
-	ORDER BY state");
-
-//find the gym used in the workout
-$stmt3 = $db->prepare("SELECT * FROM workouts WHERE workout_id = :workoutid");
-$stmt3->execute(array(':workoutid'=>$workout_id_prev));
-$workout_info = $stmt3->fetch(PDO::FETCH_ASSOC);
-$main_gymid = $workout_info['gymid'];
-
-
-//find countryCode associated with gymid
-$stmt4 = $db->prepare("SELECT countryCode FROM gyms WHERE gymid=:gymid");
-$stmt4->execute(array(':gymid'=>$main_gymid));
-$countryCodeResult = $stmt4->fetch(PDO::FETCH_ASSOC);
-$countryCode = $countryCodeResult['countryCode'];
-
-
-//find date of workout
-$date_workout = $workout_info['date_workout'];
+$date_workout = $workoutInfo['date_workout'];
 list($year,$month,$day) = explode('-',date('Y-m-d',strtotime($date_workout)));
 $month = $month-1; //months start at 0 = January
 
@@ -95,12 +74,7 @@ $month = $month-1; //months start at 0 = January
 $gymOptions = '<option value="">Select a Gym...</option>';
 include 'genGymOptions.php';
 
-
-//extract workout segments corresponding to the workout_id
-$stmt4 = $db->prepare("SELECT climb_type,ascent_type,grade_index,reps FROM workout_segments WHERE workout_id = :workoutid");
-$stmt4->execute(array(':workoutid'=>$workout_id_prev));
-$workoutsegments = $stmt4->fetchAll(PDO::FETCH_ASSOC);
-
+$workoutSegments = $workoutLoggingService->getWorkoutSegments($workout_id_prev);
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -159,8 +133,8 @@ $workoutsegments = $stmt4->fetchAll(PDO::FETCH_ASSOC);
 		<script src="js/sitePath.js"></script>
 		<script src="js/populateCountryFromSelectCountry.js"></script>
 		<script>
-			var workoutsegments = <?php echo json_encode($workoutsegments); ?>;
-			var workoutinfo = <?php echo json_encode($workout_info); ?>;
+			var workoutsegments = <?php echo json_encode($workoutSegments); ?>;
+			var workoutinfo = <?php echo json_encode($workoutInfo); ?>;
 		</script>
 		<script src="js/uservoice.js"></script>
 		<link rel="stylesheet" type="text/css" href="style.php/mycss.scss">
