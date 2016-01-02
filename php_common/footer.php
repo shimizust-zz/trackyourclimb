@@ -1,10 +1,9 @@
-
-
 <div class="panel-footer" id="footer">
 	<p style="display: inline">
-		Copyright &copy; 2015 &middot; <a
-			href="http://shimizust.github.io/trackyourclimb/" target="_tab"> About</a> &middot;
-		<a href="contact.php">Contact</a>&middot;
+		Copyright &copy; <?php echo date("Y") ?>
+		&middot; <a href="http://shimizust.github.io/trackyourclimb/" target="_tab">About</a>
+		&middot; <a href="contact.php">Contact</a>
+		&middot;
 	</p>
 	<div class="fb-like"
 		data-href="https://www.facebook.com/trackyourclimb"
