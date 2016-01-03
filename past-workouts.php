@@ -56,8 +56,15 @@ foreach($allworkouts as $row) {
 		
 		//start a new panel since either first workout or new workout
 		$table_html .= "<div class='panel panel-default pastworkout-panel'>
-		<div class='panel-heading'>".$row['date_workout'].": <b>".$row['gym_name']."</b><a class='pull-right btn btn-primary btn-xs link-btn' href='workout-edit.php?wid=".$curr_id."'>Edit Workout</a></div>
-		<div class='panel-body'><table class='table table-striped table-bordered'>
+		<div class='panel-heading'>
+			".$row['date_workout'].": <b>".$row['gym_name']."</b>
+			<div id='workoutControlButtons-".$curr_id."' class='btn-toolbar pull-right'>
+				<a class='btn btn-primary btn-xs link-btn' href='workout-edit.php?wid=".$curr_id."'>Edit Workout</a>
+				<a class='btn btn-danger btn-xs link-btn delete-workout-button' data-workout-id='$curr_id' href='#confirmWorkoutDeleteModal' data-toggle='modal'>Delete Workout</a>
+			</div>
+		</div>
+		<div id='workoutDetails-".$curr_id."' class='panel-body'>
+		<table class='table table-striped table-bordered'>
 		<tr><th colspan=3 >Boulder</th><th colspan=3>Top-Rope</th>
 		<th colspan=3>Lead</th></tr>
 		<tr><th>Grade</th><th>Ascent Type</th><th>#</th>
@@ -191,6 +198,7 @@ return $workout_array;
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 		<script src="js/bootstrap.js"></script>
 		<script src="js/uservoice.js"></script>
+		<script src="js/sitePath.js"></script>
 
 		<link rel="stylesheet" type="text/css" href="style.php/mycss.scss">
 		
@@ -203,8 +211,26 @@ return $workout_array;
 			   iframe.src = 'downloadworkouts.php';
 			  
 			   document.body.appendChild(iframe);
-
 			};
+
+			$("#confirmWorkoutDeleteModal").on("shown.bs.modal", function(e) {
+				$(this).find('.btn-ok').data('workoutId', $(e.relatedTarget).data('workoutId'));
+			});
+
+			$('#confirmDeleteButton').click(function() {
+				var workoutId = $(this).data("workoutId");
+				$.ajax({
+					url: sitePath() + "/workout-delete.php?wid=" + workoutId,
+					success: function(data) {
+						$("#confirmWorkoutDeleteModal").modal("toggle");
+						$("#workoutControlButtons-" + workoutId).hide();
+						$("#workoutDetails-" + workoutId).html("<div class='alert alert-success text-center'><strong>Workout Deleted!</strong></div>");
+					},
+					error: function() {
+						alert('Error in AJAX call');
+					}
+				});
+			});
 		};
 		</script>
 		
@@ -229,4 +255,19 @@ return $workout_array;
 		</div>
 		<?php require("php_common/footer.php"); ?>
 </body>
+
+<div class="modal fade" id="confirmWorkoutDeleteModal" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+            <div class="modal-body">
+                Are you sure you would like to delete this workout?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <a id="confirmDeleteButton" class="btn btn-danger btn-ok">Delete Workout</a>
+            </div>
+		</div>
+	</div>
+</div>
+
 </html>
