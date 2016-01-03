@@ -220,7 +220,7 @@ return $workout_array;
 			$('#confirmDeleteButton').click(function() {
 				var workoutId = $(this).data("workoutId");
 				$.ajax({
-					url: sitePath() + "/workout-delete?wid=" + workoutId,
+					url: sitePath() + "/workout-delete.php?wid=" + workoutId,
 					success: function(data) {
 						$("#confirmWorkoutDeleteModal").modal("toggle");
 						$("#workoutControlButtons-" + workoutId).hide();
