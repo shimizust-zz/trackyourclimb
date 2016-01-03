@@ -18,6 +18,9 @@ if ($userid != $workoutUserId) {
     header('HTTP/1.1 500 Internal Server Error');
 } else {
     $workoutLoggingService->deleteWorkout($workoutId);
+
+    //update records table
+    include 'update-records-absolute.php';
 }
 
 ?>
