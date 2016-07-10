@@ -1,4 +1,4 @@
-/* compiled by scssphp v0.1.9 on Sun, 10 Jul 2016 05:09:05 +0200 (0.9443s) */
+/* compiled by scssphp v0.1.9 on Sun, 10 Jul 2016 14:39:50 +0200 (0.9545s) */
 
 @font-face {
   font-family: CasualHardcore;
@@ -79,6 +79,9 @@
 
 #boulder-grading-table, #route-grading-table {
   width: auto; }
+
+.shaded-cell {
+  background-color: #e0e0e0; }
 
 .fixedElement {
   position: static;

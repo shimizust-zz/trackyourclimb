@@ -33,7 +33,7 @@ routeConversionTable[5] = ["<=IV+","V","V+","V+","VI-","VI","VI","VI+","VII-","V
 routeConversionTable[6] = ["<=V","VI","VI","VI","VIIa","VIIb","VIIb","VIIc","VIIc","VIIIa","VIIIb","VIIIc","VIIIc","IXa","IXb","IXc","IXc","Xa","Xb","Xc","Xc","XIa","XIb","XIc","XIc","XIIa","XIIb","XIIc","XIIc","XIIIa","XIIIb"]; //Saxon
 routeConversionTable[7] = ["<=5-","5","5","5","5+","6-","6-","6","6","6+","7-","7","7","7+","7+","8-","8-","8","8","8+","9-","9-","9","9","9+","9+","9+","10-","10-","10","10"]; //Norwegian
 routeConversionTable[8] = ["<=5-","5","5","5","5+","5+","5+","6-","6-","6","6","6+","6+","7-","7","7+","8-","8","8+","9-","9","9+","10-","10","10+","11-","11","11+","12-","12","12+"]; //Finnish
-routeConversionTable[9] = ["<=III sup","IV","IV","IV","IV sup","V","V","VI","VI","VI sup","VI sup","7a","7b","7c","7c","8a","8b","8c","9a","9b","9c","10a","10b","10c","11a","11b","11c","12a","12b","12c","12d"]; //Brazilian
+routeConversionTable[9] = ["<=III sup","IV","IV","IV","IV sup","V","V","VI","VI","VI sup","VI sup","7a","7b","7c","7c","8a","8b","8c","9a","9b","9c","10a","10b","10c","11a","11b","11c","12a","12b","12c","13a"]; //Brazilian
 
 
 var boulderConversionTable = Array(3);
