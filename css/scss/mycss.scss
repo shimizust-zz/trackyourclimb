@@ -61,6 +61,34 @@ $footerheight: 40px;
 	
 }
 
+// Common elements
+.equation-block {
+	font-size: 16px;
+	font-family: "Palatino Linotype", "Times New Roman", Times;
+	background-color: $lightgray;
+	padding: 20px 20px 20px;
+	margin: 5px 10px 5px;
+	display: inline-block;
+	border-radius: 2px;
+	border: 1px solid $grayborder;
+}
+
+.equation-block li {
+	margin-bottom: 5px;
+}
+.equation-table {
+	background-color: #fff;
+	margin-left: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	width: auto;
+	display: inline-block;
+}
+
+#boulder-grading-table, #route-grading-table {
+	width: auto;
+}
+
 .fixedElement {
 
     position:static;

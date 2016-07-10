@@ -1,4 +1,4 @@
-/* compiled by scssphp v0.1.9 on Sun, 23 Aug 2015 21:04:49 +0200 (0.235s) */
+/* compiled by scssphp v0.1.9 on Sun, 10 Jul 2016 05:09:05 +0200 (0.9443s) */
 
 @font-face {
   font-family: CasualHardcore;
@@ -55,6 +55,30 @@
 
   #splashtitle-mobile {
     display: none; } }
+
+.equation-block {
+  font-size: 16px;
+  font-family: "Palatino Linotype", "Times New Roman", Times;
+  background-color: #f8f8f8;
+  padding: 20px 20px 20px;
+  margin: 5px 10px 5px;
+  display: inline-block;
+  border-radius: 2px;
+  border: 1px solid #e0e0e0; }
+
+.equation-block li {
+  margin-bottom: 5px; }
+
+.equation-table {
+  background-color: #fff;
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: auto;
+  display: inline-block; }
+
+#boulder-grading-table, #route-grading-table {
+  width: auto; }
 
 .fixedElement {
   position: static;

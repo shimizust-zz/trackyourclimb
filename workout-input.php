@@ -384,12 +384,29 @@ $main_cragid = $mainClimbingAreas['main_crag'];
 				<input type="text" name="workoutdate" class="form-control datepicker">
 
 			</div>
-			<div class="alert alert-info fixedElement" id="current-points">
+			<div data-content="Points calculation detailed <a href='statsfaq.php#points-calculation' target='_blank'>here</a>" class="alert alert-info fixedElement" id="current-points">
 				<h3>Current Points: <b id="current-point-total">0</b></h3>
 			</div>
 			
 		</div>
-		
+		<script>
+			// Make popover persist when hovering over the points box, as well as the popover itself
+			$("#current-points").popover({ trigger: "manual" , html: true, animation:true})
+				.on("mouseenter", function () {
+					var _this = this;
+					$(this).popover("show");
+					$(".popover").on("mouseleave", function () {
+						$(_this).popover('hide');
+					});
+				}).on("mouseleave", function () {
+					var _this = this;
+					setTimeout(function () {
+						if (!$(".popover:hover").length) {
+							$(_this).popover("hide");
+						}
+					}, 300);
+				});
+		</script>
 			
 		
 		

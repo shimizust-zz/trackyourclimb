@@ -33,6 +33,7 @@ include 'php_dataquery/getUserGym.php';
 								?>
 								<li><a href="gympage.php?gymid=<?php echo $main_gymid ?>">My Gym Stats</a></li>
 								<?php } ?>
+								<li><a href="statsfaq.php">Stats FAQ</a></li>
 							</ul>
 						</li>
 						<li class="dropdown">

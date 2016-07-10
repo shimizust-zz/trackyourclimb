@@ -1,7 +1,7 @@
 var projectPopoverText = 'Attempt = Attempted, but did not complete a climb cleanly (x0.5)';
 var redpointPopoverText = 'Redpoint = Completed a climb cleanly after multiple tries and/or beta (x1.0)';
-var flashPopoverText = 'Flash = Completed a climb on first try with beta (x1.25)';
-var onsightPopoverText = 'Onsight = Completed a climb on first try with no beta (x1.35)';
+var flashPopoverText = 'Flash = Completed a climb on first try with beta (x1.15)';
+var onsightPopoverText = 'Onsight = Completed a climb on first try with no beta (x1.2)';
 
 
 var popoverIcon = '<span class = "glyphicon glyphicon-question-sign"></span>';
