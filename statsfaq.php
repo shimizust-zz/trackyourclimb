@@ -46,8 +46,8 @@ include 'php_common/cookiecheck.php';
 						<li id="grading-system-conversion">
 							<h3 class="text-left">What is the conversion between different grading systems?</h3>
 							<p>All grades in each grading system are converted between each other using the following tables.<br><br>
-							Because grading systems have different number of grades to represent the same range of difficulty, a grade in one system may represent multiple grades in another system. For example, in Fontainbleu, a 4-, 4 and 4+ all map to a V0 in the Hueco system.<br><br>
-							Each grade is recorded using its absolute grade index. The bolded/shaded entries in the tables indicate which absolute grade index is used when that particular grading system is used to record a climb. For example, if you are using the Hueco system, a V3 will be recorded as an absolute grade index of 5. However, if you recorded a 6A+ in Fontainbleu (absolute grade index = 6) and switched your grading system to Hueco, it would translate to a V3 but not change the absolute grade index.</p><br>
+							Because grading systems have different number of grades to represent the same range of difficulty, a grade in one system may represent multiple grades in another system. For example, in Fontainebleau, a 4-, 4 and 4+ all map to a V0 in the Hueco system.<br><br>
+							Each grade is recorded using its absolute grade index. The bolded/shaded entries in the tables indicate which absolute grade index is used when that particular grading system is used to record a climb. For example, if you are using the Hueco system, a V3 will be recorded as an absolute grade index of 5. However, if you recorded a 6A+ in Fontainebleau (absolute grade index = 6) and switched your grading system to Hueco, it would translate to a V3 but not change the absolute grade index.</p><br>
 							
 							<h4 class="text-left">Boulder Grading Systems</h4>
 							<table class="table table-bordered" id="boulder-grading-table">
