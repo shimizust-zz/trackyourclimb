@@ -61,7 +61,7 @@ if (is_null($actual_image_name)) {
 }
 
 $alert = "";
-$valid_formats = array("jpg","png","gif","bmp");
+$valid_formats = array("jpg","jpeg","png","gif","bmp");
 if (isset($_POST['upload'])) {
 	$name= $_FILES['photoimg']['name'];
 	$size = $_FILES['photoimg']['size'];
@@ -69,7 +69,7 @@ if (isset($_POST['upload'])) {
 		list($txt,$ext) = explode(".",$name);
 		//return the image filename and extension separately
 		
-		if (in_array($ext,$valid_formats) && $size<(250*1024)) {
+		if (in_array(strtolower($ext),$valid_formats) && $size<(250*1024)) {
 			$max_length = 5;
 			if (strlen($txt)<5) {
 				$max_length = strlen($txt);
