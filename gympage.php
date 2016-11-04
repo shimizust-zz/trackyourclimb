@@ -2,6 +2,7 @@
 
 include 'dbconnect.php';
 include 'php_common/cookiecheck.php';
+include 'php_common/cleanURL.php';
 if (isset($_GET['gymid'])) {
 	$gymid = $_GET['gymid'];
 }
@@ -119,9 +120,7 @@ include 'genDefaultRankingTable.php';
 						<a href="gym-edit.php?gymid=<?php echo $gymid;?>"><p style="text-align:right">Edit Gym Details...</p></a>
 						<ul class="list-group">
 							<?php
-								$URL = $result['website'];
-								if(strpos($URL, "http://")!== false) $URL = $URL;
-								else $URL = "http://$URL";
+								$URL = cleanURL($result['website']);
 							?>
 							<li class="list-group-item"><b>Website:</b> <a href=<?php echo $URL?> target="_blank"><?php echo $URL?></a></li>
 							<li class="list-group-item"><b>Address:</b> <?php echo $result['address']?></li>
