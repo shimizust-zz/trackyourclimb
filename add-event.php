@@ -1,13 +1,17 @@
 <?php 
-	
+include "./core/bootstrap.php";
+
 //connect to database
 include 'dbconnect.php';
 
 //check that user has a valid cookie, redirect if no valid cookie
 include 'php_common/cookiecheck.php';	
 
-include 'php_dataquery/getUserCountry.php';
-include 'php_dataquery/getUserGym.php';				
+//get user's country
+$userService = new UserService();
+
+$countryCode = $userService->getUserCountryCode($userid);
+$main_gymid = $userService->getUserMainClimbingAreas($userid)["main_gym"];
 
 $gym_options = '<option value="">Select a Gym...</option>';
 include 'genGymOptions.php';

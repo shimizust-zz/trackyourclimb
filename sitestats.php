@@ -1,12 +1,11 @@
 <?php 
+include "./core/bootstrap.php";
 
 //connect to database
 include 'dbconnect.php';
 
 //check that user has a valid cookie, redirect if no valid cookie
 include 'php_common/cookiecheck.php';	
-
-include 'getNumUsers.php';
 
 
 ?>
@@ -97,15 +96,6 @@ include 'getNumUsers.php';
 					</div>
 				</div>
 				<div class="tab-pane fade" id="site-climber-histogram">
-					<!--
-					<table>
-						<tr>
-							<td>Number of Users:</td>
-							<td><?php echo $numUsers; ?></td>
-						</tr>
-						<tr></tr>
-					</table>
-					-->
 					
 					<!--Plot histogram of highest climbing grade of each type-->
 					

@@ -1,15 +1,15 @@
 <?php 
-	
+include "./core/bootstrap.php";
+
 //connect to database
 include 'dbconnect.php';
 
 //check that user has a valid cookie, redirect if no valid cookie
 include 'php_common/cookiecheck.php';	
-		 		
-//include 'genGymList.php';
 
 //get user's country
-include 'php_dataquery/getUserCountry.php';	
+$userService = new UserService();
+$countryCode = $userService->getUserCountryCode($userid);
 
 //for each country, extract the number of gyms
 $stmt = $db->prepare("SELECT * FROM gyms");

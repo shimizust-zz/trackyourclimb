@@ -82,9 +82,10 @@ include "./core/bootstrap.php";
 //connect to database
 include 'dbconnect.php';
 
+$userService = new UserService();
 include 'php_dataquery/getNumClimbs.php';
-include 'php_dataquery/getNumUsers.php';
 include 'php_dataquery/getNumGyms.php';
+$numUsers = $userService->getNumUsers();
 /*
  * This login page has the following scenarios:
  * 1) If user already has valid cookies for the site, then send them to

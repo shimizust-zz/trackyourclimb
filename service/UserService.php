@@ -6,10 +6,12 @@ include (realpath(dirname(__FILE__).'/../mailchimp_subscribe.php'));
 
 class UserService {
 	
+	protected $userDAO;
 	protected $userPrefsDAO;
 	protected $userDataDAO;
 	
 	public function __construct() {
+		$this->userDAO = new UserDAO();
 		$this->userPrefsDAO = new UserPrefsDAO();
 		$this->userDataDAO = new UserDataDAO();
 	}
@@ -25,7 +27,7 @@ class UserService {
 
 		// Perform check that username/email is not already taken
 		// and password is valid (not empty)
-		$userDAO = new UserDAO();
+		$userDAO = $this->userDAO;
 		
 		if ($userDAO->checkUsernameExists($username)) {
 			return ["result" => false, "error" => "Username is already in use."];
@@ -118,6 +120,9 @@ class UserService {
 		return $gradingSystems;
 	}
 	
+	public function getNumUsers() {
+		return $this->userDAO->getNumUsers();
+	}
 }
 
 

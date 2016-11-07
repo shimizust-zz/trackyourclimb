@@ -1,7 +1,8 @@
 <?php
-//Find out user's gym
+include "./core/bootstrap.php";
 
-include 'php_dataquery/getUserGym.php';
+$userService = new UserService();
+$main_gymid = $userService->getUserMainClimbingAreas($userid)["main_gym"];
 
 ?>
 <div>
