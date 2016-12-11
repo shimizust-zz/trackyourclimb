@@ -16,7 +16,7 @@ $routeRatings[] = array("<=III sup","IV","IV sup","V","VI","VI sup","7a","7b","7
 
 $boulderRatings = array();
 $boulderRatings[] = array("V0","V1","V2","V3","V4","V5","V6","V7","V8","V9","V10","V11","V12","V13","V14","V15","V16"); //Hueco
-$boulderRatings[] = array("4-","4","4+","5","5+","6A","6A+","6B","6B+","6C","6C+","7A","7A+","7B","7B+","7C","7C+","8A","8A+","8B","8B+","8C","8C+"); //Fontainbleu
+$boulderRatings[] = array("4-","4","4+","5","5+","6A","6A+","6B","6B+","6C","6C+","7A","7A+","7B","7B+","7C","7C+","8A","8A+","8B","8B+","8C","8C+"); //Fontainebleau
 $boulderRatings[] = array("II","III","IV","IV sup","V","VI","VI sup","7a","7b","7c","8a","8b","8c","9a","9b","9c","10a","10b","10c","11a","11b"); //Brazilian
 
 
@@ -36,7 +36,7 @@ $routeConversionTable[] = array("<=III sup","IV","IV","IV","IV sup","V","V","VI"
 
 $boulderConversionTable = array();
 $boulderConversionTable[] = array("V0","V0","V0","V1","V2","V3","V3","V4","V5","V5","V5","V6","V7","V8","V8","V9","V10","V11","V12","V13","V14","V15","V16"); //Hueco
-$boulderConversionTable[] = array("4-","4","4+","5","5+","6A","6A+","6B","6B+","6C","6C+","7A","7A+","7B","7B+","7C","7C+","8A","8A+","8B","8B+","8C","8C+"); //Fontainbleu
+$boulderConversionTable[] = array("4-","4","4+","5","5+","6A","6A+","6B","6B+","6C","6C+","7A","7A+","7B","7B+","7C","7C+","8A","8A+","8B","8B+","8C","8C+"); //Fontainebleau
 $boulderConversionTable[] = array("II","III","IV","IV sup","V","VI","VI","VI sup","VI sup","7a","7b","7c","8a","8b","8c","9a","9b","9c","10a","10b","10c","11a","11b"); //Brazilian
 
 /*
@@ -65,7 +65,7 @@ $routeGradeMapAbsGradeInd[] = ["<=III sup"=>0,"IV"=>2,"IV sup"=>4,"V"=>5,"VI"=>7
 
 $boulderGradeMapAbsGradeInd = array();
 $boulderGradeMapAbsGradeInd[] = ["V0"=>1,"V1"=>3,"V2"=>4,"V3"=>5,"V4"=>7,"V5"=>9,"V6"=>11,"V7"=>12,"V8"=>13,"V9"=>15,"V10"=>16,"V11"=>17,"V12"=>18,"V13"=>19,"V14"=>20,"V15"=>21,"V16"=>22]; //Hueco
-$boulderGradeMapAbsGradeInd[] = ["4-"=>0,"4"=>1,"4+"=>2,"5"=>3,"5+"=>4,"6A"=>5,"6A+"=>6,"6B"=>7,"6B+"=>8,"6C"=>9,"6C+"=>10,"7A"=>11,"7A+"=>12,"7B"=>13,"7B+"=>14,"7C"=>15,"7C+"=>16,"8A"=>17,"8A+"=>18,"8B"=>19,"8B+"=>20,"8C"=>21,"8C+"=>22]; //Fontainbleu
+$boulderGradeMapAbsGradeInd[] = ["4-"=>0,"4"=>1,"4+"=>2,"5"=>3,"5+"=>4,"6A"=>5,"6A+"=>6,"6B"=>7,"6B+"=>8,"6C"=>9,"6C+"=>10,"7A"=>11,"7A+"=>12,"7B"=>13,"7B+"=>14,"7C"=>15,"7C+"=>16,"8A"=>17,"8A+"=>18,"8B"=>19,"8B+"=>20,"8C"=>21,"8C+"=>22]; //Fontainebleau
 $boulderGradeMapAbsGradeInd[] = ["II"=>0,"III"=>1,"IV"=>2,"IV sup"=>3,"V"=>4,"VI"=>5,"VI sup"=>7,"7a"=>9,"7b"=>10,"7c"=>11,"8a"=>12,"8b"=>13,"8c"=>14,"9a"=>15,"9b"=>16,"9c"=>17,"10a"=>18,"10b"=>19,"10c"=>20,"11a"=>21,"11b"=>22]; //Brazilian
 
 ?>

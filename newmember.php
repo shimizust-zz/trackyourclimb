@@ -330,7 +330,7 @@ if (isset($_POST['prefsubmit'])) {
 				<p>Choose your bouldering grading system:</p>
 				<select name="boulder-rating-select" id="boulder-rating-select" class="form-control" required>
 					<option value="0" selected>Hueco (V-Scale)</option>
-					<option value="1">Fontainbleu</option>
+					<option value="1">Fontainebleau</option>
 					<option value="2">Brazilian</option>
 				</select>
 				<br><br>

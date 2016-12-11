@@ -350,7 +350,7 @@ $countryCode = $userService->getUserCountryCode($userid);
 				<p>Choose your bouldering grading system:</p>
 				<select name="boulder-rating-select" id="boulder-rating-select" class="form-control" required>
 					<option value="0" <?php echo $boulderGradingID==0?'selected':'';?>>Hueco (V-Scale)</option>
-					<option value="1" <?php echo $boulderGradingID==1?'selected':'';?>>Fontainbleu</option>
+					<option value="1" <?php echo $boulderGradingID==1?'selected':'';?>>Fontainebleau</option>
 					<option value="2" <?php echo $boulderGradingID==2?'selected':'';?>>Brazilian</option>
 				</select>
 				<br><br>
